@@ -5,6 +5,7 @@ import argparse
 from datetime import date, timedelta
 
 from bouncer.agent import Bouncer
+from bouncer.live_providers import build_providers_from_env
 from bouncer.models import TripRequest, CabinClass
 
 
@@ -17,9 +18,12 @@ def main():
     parser.add_argument("--travelers", type=int, default=1)
     parser.add_argument("--cabin", default="economy", choices=["economy", "business"])
     parser.add_argument("--set-balance", nargs=2, metavar=("PROGRAM", "AMOUNT"), help="Set a balance")
+    parser.add_argument("--mock", action="store_true", help="Force mock data (or set BOUNCER_USE_MOCK=1)")
     args = parser.parse_args()
 
-    bouncer = Bouncer()
+    flights, hotels, source = build_providers_from_env(force_mock=True if args.mock else None)
+    bouncer = Bouncer(flight_provider=flights, hotel_provider=hotels)
+    print(f"Data source: {source}")
 
     if args.set_balance:
         prog, amt = args.set_balance

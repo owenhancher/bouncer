@@ -8,6 +8,7 @@ from datetime import date, timedelta
 from typing import Optional
 
 from bouncer.agent import Bouncer
+from bouncer.live_providers import build_providers_from_env
 from bouncer.models import TripRequest, CabinClass, TravelType
 
 # Page config
@@ -23,7 +24,9 @@ st.caption("Travel deal agent on steroids — cash vs points, transfers, and pro
 
 # Initialize session state
 if "bouncer" not in st.session_state:
-    st.session_state.bouncer = Bouncer()
+    _flights, _hotels, _source = build_providers_from_env()
+    st.session_state.bouncer = Bouncer(flight_provider=_flights, hotel_provider=_hotels)
+    st.session_state.data_source = _source
 if "balances_loaded" not in st.session_state:
     # Seed demo balances on first load
     b = st.session_state.bouncer
@@ -35,6 +38,7 @@ if "balances_loaded" not in st.session_state:
     st.session_state.balances_loaded = True
 
 bouncer: Bouncer = st.session_state.bouncer
+st.caption(f"Data source: **{st.session_state.get('data_source', 'Mock data')}**")
 
 # Sidebar – balances
 with st.sidebar:
