@@ -8,7 +8,7 @@ def test_real_file_loads():
     d = load_deals(date(2026, 11, 4))
     assert d["as_of"] == "2026-11-04"
     assert len(d["transfer_bonuses"]) == 10
-    assert len(d["buy_points_sales"]) == 10
+    assert len(d["buy_points_sales"]) == 13
     for t in d["transfer_bonuses"]:
         assert {"bank", "partner", "bonus_pct", "ends", "source_url"} <= t.keys()
 
@@ -36,7 +36,7 @@ def test_expired_filtered_and_sorted(tmp_path):
 def test_all_real_deals_expire_eventually():
     d = load_deals(date(2027, 1, 1))
     assert d["transfer_bonuses"] == []
-    assert [s["program"] for s in d["buy_points_sales"]] == ["American AAdvantage"]
+    assert {s["program"] for s in d["buy_points_sales"]} == {"American AAdvantage", "Virgin Atlantic Flying Club", "Wyndham Rewards"}
 
 
 def test_days_left():
@@ -64,3 +64,51 @@ def test_hotel_sections_default_empty(tmp_path):
     p.write_text(json.dumps({"as_of": "2026-11-04", "transfer_bonuses": [], "buy_points_sales": []}))
     d = load_deals(date(2026, 11, 4), path=p)
     assert d["trending_hotels"] == [] and d["hotel_promos"] == []
+
+
+from bouncer.deals import verdict, where_to_buy  # noqa: E402
+
+
+def test_verdict_thresholds():
+    assert verdict(0.8, 1.0)["label"] == "Good buy"
+    assert verdict(0.81, 1.0)["label"] == "Fair"
+    assert verdict(1.0, 1.0)["label"] == "Fair"
+    assert verdict(1.01, 1.0)["label"] == "Skip"
+    assert verdict(None, 1.0)["level"] == "unknown"
+    assert verdict(1.0, None)["level"] == "unknown"
+
+
+def test_where_to_buy_sort_and_fallback():
+    sales = [
+        {"program": "A", "bonus_or_discount": "", "cents_per_point": 2.0, "ends": "2026-11-10", "source_url": "src-a"},
+        {"program": "B", "bonus_or_discount": "", "cents_per_point": None, "ends": "2026-11-05", "source_url": "src-b"},
+        {"program": "C", "bonus_or_discount": "", "cents_per_point": 0.5, "ends": None, "source_url": "src-c",
+         "buy_url": "https://official.example/buy"},
+    ]
+    rows = where_to_buy(sales, {"A": 1.0, "B": 1.0, "C": 1.0}, date(2026, 11, 4))
+    assert [r["program"] for r in rows] == ["C", "A", "B"]
+    assert rows[0]["link"] == "https://official.example/buy" and rows[0]["link_is_official"]
+    assert rows[1]["link"] == "src-a" and not rows[1]["link_is_official"]
+    assert rows[1]["verdict"] == "Skip" and rows[0]["verdict"] == "Good buy"
+    assert rows[0]["standard_cpp"] is None and rows[0]["max_purchase"] is None  # optional fields default
+
+
+def test_where_to_buy_real_data():
+    from bouncer.valuations import PROGRAM_VALUES
+    rows = where_to_buy(load_deals(date(2026, 11, 4))["buy_points_sales"], PROGRAM_VALUES, date(2026, 11, 4))
+    assert len(rows) == 13
+    ratios = [r["ratio"] for r in rows if r["ratio"] is not None]
+    assert ratios == sorted(ratios)
+    for r in rows:
+        assert r["link"].startswith("https://")
+
+
+def test_conservative_figures_and_no_sale_list():
+    d = load_deals(date(2026, 11, 4))
+    by = {s["program"]: s for s in d["buy_points_sales"]}
+    assert by["Alaska Atmos Rewards"]["cents_per_point"] == 1.98
+    assert by["Finnair Plus Avios"]["cents_per_point"] == 1.45
+    assert by["Choice Privileges"]["bonus_or_discount"].startswith("30%")
+    assert all(s.get("max_purchase") is None for s in d["buy_points_sales"])
+    names = {n["program"] for n in d["buy_points_no_sale"]}
+    assert "ANA Mileage Club" in names and len(names) == 10

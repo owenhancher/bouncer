@@ -1,0 +1,13 @@
+[theme]
+base = "light"
+primaryColor = "#B3243A"            # Velvet
+backgroundColor = "#F5F1E8"         # Paper
+secondaryBackgroundColor = "#EAE3D4" # Paper, one shade deeper (sidebar, inputs)
+textColor = "#14161B"               # Ink
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false

@@ -75,83 +75,162 @@
   "buy_points_sales": [
     {
       "program": "Hilton Honors",
-      "bonus_or_discount": "120% bonus",
+      "bonus_or_discount": "120% bonus on 5k+",
       "cents_per_point": 0.45,
       "ends": "2026-11-21",
       "note": "Best-ever price",
-      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": "https://www.hilton.com/en/p/hilton-honors/buy-give-receive-points/",
+      "standard_cpp": "~1.0 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "IHG One Rewards",
-      "bonus_or_discount": "Up to 100% bonus",
+      "bonus_or_discount": "Up to 100% bonus on 40k+",
       "cents_per_point": 0.5,
       "ends": "2026-11-05",
-      "note": "",
-      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+      "note": "80/90/100% tiers",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": null,
+      "standard_cpp": "~1.0 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "JetBlue TrueBlue",
-      "bonus_or_discount": "120% bonus",
+      "bonus_or_discount": "120% bonus on 20k+",
       "cents_per_point": 1.47,
       "ends": "2026-11-05",
-      "note": "",
-      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+      "note": "100/110/120% tiers",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": null,
+      "standard_cpp": "~3.23 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "Alaska Atmos Rewards",
-      "bonus_or_discount": "Up to 110% bonus",
-      "cents_per_point": 1.79,
+      "bonus_or_discount": "90% bonus",
+      "cents_per_point": 1.98,
       "ends": "2026-11-07",
-      "note": "Approximate price",
-      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+      "note": "Sources conflict; one lists up to 110% at ~1.79¢. Showing the conservative figure.",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": null,
+      "standard_cpp": "~3.76 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "Marriott Bonvoy",
-      "bonus_or_discount": "55% bonus",
+      "bonus_or_discount": "55% bonus on 2k-200k",
       "cents_per_point": 0.81,
       "ends": "2026-11-23",
       "note": "",
-      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": null,
+      "standard_cpp": "~1.25 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "Choice Privileges",
-      "bonus_or_discount": "Up to 40% bonus",
+      "bonus_or_discount": "30% bonus",
       "cents_per_point": 0.74,
       "ends": "2026-11-26",
-      "note": "",
-      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+      "note": "Sources conflict (30% vs 40%); showing the conservative 30%.",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
+      "buy_url": null,
+      "standard_cpp": "~1.04 (derived)",
+      "max_purchase": null,
+      "notes": null
     },
     {
-      "program": "Finnair Avios",
-      "bonus_or_discount": "Up to 50% off",
-      "cents_per_point": 1.09,
+      "program": "Finnair Plus Avios",
+      "bonus_or_discount": "50% bonus on 85k+",
+      "cents_per_point": 1.45,
       "ends": "2026-11-16",
-      "note": "Approximate price",
-      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+      "note": "Headlines say up to 50% off (~1.09¢); the detailed terms say 50% bonus on 85k+ at 1.45¢. Showing the conservative figure.",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": "https://www.finnair.com/us-en/finnair-plus/buy--transfer-or-exchange-avios",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "Southwest Rapid Rewards",
       "bonus_or_discount": "45% off",
       "cents_per_point": null,
       "ends": "2026-11-17",
-      "note": "Price per point not published",
-      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+      "note": "Sale price per point not published",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
+      "buy_url": "https://www.southwest.com/rapid-rewards/points/buy-gift-transfer/",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "Air Canada Aeroplan",
       "bonus_or_discount": "Up to 30% off",
       "cents_per_point": null,
       "ends": "2026-11-18",
-      "note": "Price per point not published",
-      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+      "note": "Buy link is the Points.com sign-in for Aeroplan",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
+      "buy_url": "https://ssogateway.points.com/v2/oidc/aircanadaoidc?ssoProduct=buy",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null
     },
     {
       "program": "American AAdvantage",
-      "bonus_or_discount": "Up to 40% off",
+      "bonus_or_discount": "Up to 40% off (151k-300k miles)",
       "cents_per_point": 2.26,
       "ends": null,
-      "note": "Ongoing",
-      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+      "note": "Tiers 10/15/20/30/40% off",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": "https://www.aa.com/aadvantage-program/buy-gift-transfer/en_US/home/buy",
+      "standard_cpp": "~3.77 (derived)",
+      "max_purchase": null,
+      "notes": null,
+      "ends_text": "Ongoing"
+    },
+    {
+      "program": "World of Hyatt",
+      "bonus_or_discount": "20% off on 5k+",
+      "cents_per_point": 2.08,
+      "ends": "2026-12-21",
+      "note": "",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
+      "buy_url": null,
+      "standard_cpp": "~2.6 (derived)",
+      "max_purchase": null,
+      "notes": null
+    },
+    {
+      "program": "Virgin Atlantic Flying Club",
+      "bonus_or_discount": "Up to 50% bonus",
+      "cents_per_point": null,
+      "ends": null,
+      "note": "End date unknown",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
+      "buy_url": "https://www.virginatlantic.com/en-US/flying-club/earn-points/buy-points",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null,
+      "ends_text": "Unknown"
+    },
+    {
+      "program": "Wyndham Rewards",
+      "bonus_or_discount": "Up to 15% bonus (cardholders only)",
+      "cents_per_point": null,
+      "ends": null,
+      "note": "Wyndham cardholders only; end date unknown",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
+      "buy_url": "https://www.wyndhamhotels.com/en-us/wyndham-rewards/purchase-points",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null,
+      "ends_text": "Unknown"
     }
   ],
   "trending_hotels": [
@@ -301,5 +380,70 @@
       "why": "15% off award nights at 323 new hotels, up to 3 nights",
       "source_url": "https://awardwallet.com/news/ihg-one-rewards/new-hotel-award-discount/"
     }
-  ]
+  ],
+  "schema_notes": "buy_points_sales optional fields: buy_url (verified official buy page), standard_cpp (text, may be '(derived)'), max_purchase, notes, ends_text (shown when ends is null, e.g. 'Ongoing'/'Unknown'). Missing optional fields render as a dash; max_purchase is unconfirmed everywhere so the UI shows 'See site'.",
+  "buy_points_no_sale": [
+    {
+      "program": "United MileagePlus",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Delta SkyMiles",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "British Airways Avios",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Air France-KLM Flying Blue",
+      "buy_url": null,
+      "note": "Last sale ended Sep 16",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Avianca LifeMiles",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Turkish Airlines Miles&Smiles",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Emirates Skywards",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Singapore KrisFlyer",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "Accor Live Limitless",
+      "buy_url": null,
+      "note": "",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    },
+    {
+      "program": "ANA Mileage Club",
+      "buy_url": null,
+      "note": "Purchase availability unclear",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+    }
+  ],
+  "bank_points_note": "Bank points (Chase, Amex, Citi, Capital One, Bilt) can't be bought directly; they're earned through cards.",
+  "valuation_reference_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
 }
