@@ -1,0 +1,17 @@
+# Example environment variables for live integrations
+# Copy to .env and fill in
+
+# Flight cash
+AMADEUS_API_KEY=
+AMADEUS_API_SECRET=
+DUFFEL_API_TOKEN=
+
+# Award search
+AWARDTOOL_API_KEY=
+SEATS_AERO_API_KEY=
+
+# Hotels
+BOOKING_API_KEY=
+
+# Optional
+TPG_SCRAPE_ENABLED=false
