@@ -273,7 +273,7 @@ with tab_buy:
              "Note": _dash(n.get("note")), "Buy page": n.get("buy_url") or n["source_url"]}
             for n in _deals["buy_points_no_sale"]
         ],
-        column_config={"Buy page": st.column_config.LinkColumn("Buy page", display_text=r"^https://(?:www\\.)?([^/]+).*")},
+        column_config={"Buy page": st.column_config.LinkColumn("Buy page", display_text=r"^https://(?:www\.)?([^/]+).*")},
         hide_index=True,
         width="stretch",
     )
