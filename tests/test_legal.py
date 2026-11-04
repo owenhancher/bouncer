@@ -1,13 +1,15 @@
+import re
+
 from bouncer.legal import PAGES, load_page, savings_note
 
-DRAFT = "DRAFT, not legal advice; have a lawyer review before relying on it."
 
-
-def test_legal_pages_exist_and_load():
+def test_legal_pages_exist_load_and_are_filled_in():
     for fname in PAGES.values():
         text = load_page(fname)
-        assert DRAFT in text.splitlines()[0]
-        assert "# " in text and "[EFFECTIVE DATE]" in text
+        assert "# " in text
+        assert "DRAFT" not in text
+        assert "Bouncer Travel" in text or "bouncertravel@gmail.com" in text
+        assert not re.search(r"\[[A-Z][A-Z /,.]+\]", text), f"placeholder left in {fname}"
 
 
 def test_savings_note():

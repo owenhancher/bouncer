@@ -1,10 +1,8 @@
-> **DRAFT, not legal advice; have a lawyer review before relying on it.**
-
 # Affiliate Disclosure
 
-**Effective date:** [EFFECTIVE DATE]
+**Effective date:** November 4, 2026
 
-In line with the U.S. Federal Trade Commission's guidance on endorsements, we want to be upfront: **some links on Bouncer may be affiliate links.** If you click one and then buy, sign up or apply, Bouncer ([LEGAL ENTITY NAME]) may earn a commission.
+In line with the U.S. Federal Trade Commission's guidance on endorsements, we want to be upfront: **some links on Bouncer may be affiliate links.** If you click one and then buy, sign up or apply, Bouncer (Bouncer Travel) may earn a commission.
 
 - **No extra cost to you.** Any commission is paid by the partner. It does not raise the price you pay.
 - **It doesn't change our verdicts.** Bouncer's rankings, values and "Good buy / Fair / Skip" verdicts come from the same rules and valuations whether or not a link earns us anything. We do not rank a deal higher because it pays us.
@@ -12,4 +10,4 @@ In line with the U.S. Federal Trade Commission's guidance on endorsements, we wa
 
 Bouncer never sells points or miles. Any purchase or transfer happens on the official program's site, in your own account.
 
-Questions: [CONTACT EMAIL]
+Questions: bouncertravel@gmail.com

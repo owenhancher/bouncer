@@ -1,10 +1,8 @@
-> **DRAFT, not legal advice; have a lawyer review before relying on it.**
-
 # Bouncer Terms of Service
 
-**Effective date:** [EFFECTIVE DATE]
+**Effective date:** November 4, 2026
 
-These terms are an agreement between you and [LEGAL ENTITY NAME] ("Bouncer", "we", "us"). By using Bouncer, you agree to them. If you don't agree, please don't use Bouncer.
+These terms are an agreement between you and Bouncer Travel ("Bouncer", "we", "us"). By using Bouncer, you agree to them. If you don't agree, please don't use Bouncer.
 
 ## 1. What Bouncer is
 
@@ -31,7 +29,7 @@ Don't misuse Bouncer. For example, don't try to break, overload or reverse engin
 
 ## 6. Paid services (reserved)
 
-Bouncer is currently free. We may offer paid features in the future. If we do, fees, billing terms and the refund policy **will be announced** before you are charged, and will form part of these terms. [PAID SERVICES TERMS TO BE ANNOUNCED]
+Bouncer is currently free. We may offer paid features in the future. If we do, fees, billing terms and the refund policy **will be announced** before you are charged, and will form part of these terms.
 
 ## 7. Third-party sites and links
 
@@ -43,7 +41,7 @@ To the maximum extent the law allows, Bouncer is provided **"as is" and "as avai
 
 ## 9. Limitation of liability
 
-To the maximum extent the law allows, [LEGAL ENTITY NAME] and its owners, team and partners are **not liable** for any indirect, incidental, special, consequential or punitive damages. That includes lost savings, lost points or miles, missed award space, and travel disruptions arising from your use of Bouncer. Our total liability for any claim is limited to the greater of the amount you paid us in the 12 months before the claim, or US $50.
+To the maximum extent the law allows, Bouncer Travel and its owners, team and partners are **not liable** for any indirect, incidental, special, consequential or punitive damages. That includes lost savings, lost points or miles, missed award space, and travel disruptions arising from your use of Bouncer. Our total liability for any claim is limited to the greater of the amount you paid us in the 12 months before the claim, or US $50.
 
 ## 10. Termination
 
@@ -51,7 +49,7 @@ You can stop using Bouncer at any time. We may suspend or end access to Bouncer,
 
 ## 11. Governing law
 
-These terms are governed by the laws of [STATE/GOVERNING LAW], without regard to conflict-of-law rules. [DISPUTE RESOLUTION / VENUE TO BE CONFIRMED]
+These terms are governed by the laws of the State of Florida, without regard to conflict-of-law rules. Any dispute will be handled in the state or federal courts located in Florida.
 
 ## 12. Changes to these terms
 
@@ -59,4 +57,4 @@ We may update these terms. We'll change the effective date above, and for signif
 
 ## Contact
 
-[LEGAL ENTITY NAME] · [CONTACT EMAIL] (suggested: bouncertravel@gmail.com)
+Bouncer Travel · bouncertravel@gmail.com

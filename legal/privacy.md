@@ -1,10 +1,8 @@
-> **DRAFT, not legal advice; have a lawyer review before relying on it.**
-
 # Bouncer Privacy Policy
 
-**Effective date:** [EFFECTIVE DATE]
+**Effective date:** November 4, 2026
 
-This policy explains what information Bouncer ("Bouncer", "we", "us"), operated by [LEGAL ENTITY NAME], collects, how we use it, and the choices you have.
+This policy explains what information Bouncer ("Bouncer", "we", "us"), operated by Bouncer Travel, collects, how we use it, and the choices you have.
 
 ## What we collect
 
@@ -39,7 +37,7 @@ We keep information only as long as we need it for the purposes above, or as the
 
 ## Your choices and deletion requests
 
-You can ask us to access, correct or delete personal information we hold about you by emailing **[CONTACT EMAIL]** (suggested: bouncertravel@gmail.com). We'll respond within a reasonable time, and as required by applicable law.
+You can ask us to access, correct or delete personal information we hold about you by emailing **bouncertravel@gmail.com**. We'll respond within a reasonable time, and as required by applicable law.
 
 ## Children
 
@@ -55,4 +53,4 @@ We may update this policy. When we do, we will change the effective date above, 
 
 ## Contact
 
-[LEGAL ENTITY NAME] · [CONTACT EMAIL]
+Bouncer Travel · bouncertravel@gmail.com

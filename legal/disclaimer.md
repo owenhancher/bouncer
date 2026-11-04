@@ -1,8 +1,6 @@
-> **DRAFT, not legal advice; have a lawyer review before relying on it.**
-
 # Disclaimer
 
-**Effective date:** [EFFECTIVE DATE]
+**Effective date:** November 4, 2026
 
 **Bouncer is advice-only.** It helps you compare ways to pay for travel with cash, points and miles. It does not book, sell or transfer anything for you.
 
@@ -13,4 +11,4 @@
 
 Points purchases and transfers are usually final. You are responsible for your decisions.
 
-Questions: [CONTACT EMAIL] · [LEGAL ENTITY NAME]
+Questions: bouncertravel@gmail.com · Bouncer Travel
