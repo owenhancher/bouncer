@@ -8,6 +8,7 @@ from datetime import date, timedelta
 from typing import Optional
 
 from bouncer.agent import Bouncer
+from bouncer.airports import label_for, picker_options
 from bouncer.live_providers import build_providers_from_env
 from bouncer.models import TripRequest, CabinClass, TravelType
 
@@ -169,8 +170,22 @@ with tab_plan:
     st.caption("Tell Bouncer where you're going. It does the points math and shows the exact steps.")
     col1, col2 = st.columns(2)
     with col1:
-        origin = st.text_input("Origin", value="JFK", help="Airport code")
-        destination = st.text_input("Destination", value="LHR", help="Airport code or city. Leave blank for 'anywhere'")
+        _codes = picker_options()
+        origin = st.selectbox(
+            "Origin",
+            options=_codes,
+            index=_codes.index("JFK"),
+            format_func=label_for,
+            help="Type a city, airport name or code, then pick an airport.",
+        )
+        _dest_codes = [""] + _codes
+        destination = st.selectbox(
+            "Destination",
+            options=_dest_codes,
+            index=_dest_codes.index("LHR"),
+            format_func=lambda c: label_for(c) if c else "Anywhere (Bouncer suggests)",
+            help="Type a city, airport name or code. Choose 'Anywhere' for open-ended ideas.",
+        )
     with col2:
         depart = st.date_input("Depart", value=date.today() + timedelta(days=45))
         return_date = st.date_input("Return", value=date.today() + timedelta(days=52))
