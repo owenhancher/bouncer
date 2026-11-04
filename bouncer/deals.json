@@ -1,0 +1,157 @@
+{
+  "as_of": "2026-11-04",
+  "transfer_bonuses": [
+    {
+      "bank": "Chase",
+      "partner": "IHG One Rewards",
+      "bonus_pct": 80,
+      "ends": "2026-12-03",
+      "source_url": "https://www.nerdwallet.com/travel/learn/credit-card-transfer-bonuses"
+    },
+    {
+      "bank": "Chase",
+      "partner": "Wyndham Rewards",
+      "bonus_pct": 30,
+      "ends": "2026-12-03",
+      "source_url": "https://www.nerdwallet.com/travel/learn/credit-card-transfer-bonuses"
+    },
+    {
+      "bank": "Chase",
+      "partner": "British Airways / Iberia / Aer Lingus Avios",
+      "bonus_pct": 30,
+      "ends": "2026-12-01",
+      "source_url": "https://thepointsguy.com/loyalty-programs/current-transfer-bonuses"
+    },
+    {
+      "bank": "Amex",
+      "partner": "Marriott Bonvoy",
+      "bonus_pct": 35,
+      "ends": "2026-12-10",
+      "source_url": "https://www.nerdwallet.com/travel/learn/credit-card-transfer-bonuses"
+    },
+    {
+      "bank": "Amex",
+      "partner": "Virgin Atlantic Flying Club",
+      "bonus_pct": 30,
+      "ends": "2026-11-30",
+      "source_url": "https://thepointsguy.com/loyalty-programs/current-transfer-bonuses"
+    },
+    {
+      "bank": "Capital One",
+      "partner": "Virgin Atlantic / Virgin Red",
+      "bonus_pct": 30,
+      "ends": "2026-11-20",
+      "source_url": "https://www.nerdwallet.com/travel/learn/credit-card-transfer-bonuses"
+    },
+    {
+      "bank": "Capital One",
+      "partner": "Air France-KLM Flying Blue",
+      "bonus_pct": 20,
+      "ends": "2026-11-30",
+      "source_url": "https://thepointsguy.com/loyalty-programs/current-transfer-bonuses"
+    },
+    {
+      "bank": "Capital One",
+      "partner": "Copa ConnectMiles",
+      "bonus_pct": 30,
+      "ends": "2026-12-01",
+      "source_url": "https://thepointsguy.com/loyalty-programs/current-transfer-bonuses"
+    },
+    {
+      "bank": "Citi",
+      "partner": "Cathay Pacific Asia Miles",
+      "bonus_pct": 10,
+      "ends": "2026-11-14",
+      "source_url": "https://www.nerdwallet.com/travel/learn/credit-card-transfer-bonuses"
+    },
+    {
+      "bank": "Rove",
+      "partner": "JetBlue TrueBlue",
+      "bonus_pct": 20,
+      "ends": "2026-11-14",
+      "source_url": "https://thepointsguy.com/loyalty-programs/current-transfer-bonuses"
+    }
+  ],
+  "buy_points_sales": [
+    {
+      "program": "Hilton Honors",
+      "bonus_or_discount": "120% bonus",
+      "cents_per_point": 0.45,
+      "ends": "2026-11-21",
+      "note": "Best-ever price",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+    },
+    {
+      "program": "IHG One Rewards",
+      "bonus_or_discount": "Up to 100% bonus",
+      "cents_per_point": 0.5,
+      "ends": "2026-11-05",
+      "note": "",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+    },
+    {
+      "program": "JetBlue TrueBlue",
+      "bonus_or_discount": "120% bonus",
+      "cents_per_point": 1.47,
+      "ends": "2026-11-05",
+      "note": "",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+    },
+    {
+      "program": "Alaska Atmos Rewards",
+      "bonus_or_discount": "Up to 110% bonus",
+      "cents_per_point": 1.79,
+      "ends": "2026-11-07",
+      "note": "Approximate price",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+    },
+    {
+      "program": "Marriott Bonvoy",
+      "bonus_or_discount": "55% bonus",
+      "cents_per_point": 0.81,
+      "ends": "2026-11-23",
+      "note": "",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+    },
+    {
+      "program": "Choice Privileges",
+      "bonus_or_discount": "Up to 40% bonus",
+      "cents_per_point": 0.74,
+      "ends": "2026-11-26",
+      "note": "",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+    },
+    {
+      "program": "Finnair Avios",
+      "bonus_or_discount": "Up to 50% off",
+      "cents_per_point": 1.09,
+      "ends": "2026-11-16",
+      "note": "Approximate price",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+    },
+    {
+      "program": "Southwest Rapid Rewards",
+      "bonus_or_discount": "45% off",
+      "cents_per_point": null,
+      "ends": "2026-11-17",
+      "note": "Price per point not published",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+    },
+    {
+      "program": "Air Canada Aeroplan",
+      "bonus_or_discount": "Up to 30% off",
+      "cents_per_point": null,
+      "ends": "2026-11-18",
+      "note": "Price per point not published",
+      "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/"
+    },
+    {
+      "program": "American AAdvantage",
+      "bonus_or_discount": "Up to 40% off",
+      "cents_per_point": 2.26,
+      "ends": null,
+      "note": "Ongoing",
+      "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
+    }
+  ]
+}

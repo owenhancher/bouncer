@@ -129,5 +129,81 @@ if st.button("Find best deals", type="primary", use_container_width=True):
             for a in rec.alternatives:
                 st.write(f"• {a}")
 
+# ---------------------------------------------------------------------------
+# Current points deals (advice-only reference data from bouncer/deals.json)
+# ---------------------------------------------------------------------------
+st.divider()
+with st.expander("🔥 Current points deals", expanded=False):
+    from datetime import date as _date
+
+    from bouncer.deals import days_left, load_deals
+    from bouncer.valuations import PROGRAM_VALUES
+
+    _today = _date.today()
+    _deals = load_deals(_today)
+    st.caption(
+        f"Deals as of {_deals['as_of']}. Deals change often and can end early; "
+        "verify on the source before transferring or buying points."
+    )
+
+    st.markdown("**Transfer bonuses**")
+    if _deals["transfer_bonuses"]:
+        st.dataframe(
+            [
+                {
+                    "Bank": t["bank"],
+                    "Partner": t["partner"],
+                    "Bonus": f"+{t['bonus_pct']:g}%",
+                    "Ends": t["ends"],
+                    "Days left": days_left(t["ends"], _today),
+                    "Source": t["source_url"],
+                }
+                for t in _deals["transfer_bonuses"]
+            ],
+            column_config={"Source": st.column_config.LinkColumn("Source", display_text="source")},
+            hide_index=True,
+            width="stretch",
+        )
+    else:
+        st.info("No active transfer bonuses right now.")
+
+    st.markdown("**Buy-points sales**")
+    if _deals["buy_points_sales"]:
+        _rows = []
+        for b in _deals["buy_points_sales"]:
+            cpp = b["cents_per_point"]
+            val = PROGRAM_VALUES.get(b["program"])
+            _rows.append(
+                {
+                    "Program": b["program"],
+                    "Offer": b["bonus_or_discount"],
+                    "Price ¢/pt": cpp,
+                    "Bouncer value ¢/pt": val,
+                    "Price vs value": (
+                        f"{cpp / val:.0%} of value" if cpp is not None and val else "—"
+                    ),
+                    "Ends": b["ends"] or "Ongoing",
+                    "Days left": days_left(b["ends"], _today),
+                    "Note": b.get("note", ""),
+                    "Source": b["source_url"],
+                }
+            )
+        st.dataframe(
+            _rows,
+            column_config={
+                "Source": st.column_config.LinkColumn("Source", display_text="source"),
+                "Price ¢/pt": st.column_config.NumberColumn(format="%.2f"),
+                "Bouncer value ¢/pt": st.column_config.NumberColumn(format="%.2f"),
+            },
+            hide_index=True,
+            width="stretch",
+        )
+        st.caption(
+            "Buying only makes sense for a specific redemption you've already found. "
+            "A price below Bouncer's valuation is a good sign, not a guarantee."
+        )
+    else:
+        st.info("No active buy-points sales right now.")
+
 st.divider()
 st.caption("Bouncer v0.1 · Mock data behind swappable providers. Wire real award/cash APIs to go live.")
