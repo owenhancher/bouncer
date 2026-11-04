@@ -16,7 +16,7 @@ st.set_page_config(
     page_title="Bouncer · Only real deals get in.",
     page_icon="assets/bouncer-favicon.png",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 INK, VELVET, PAPER = "#14161B", "#B3243A", "#F5F1E8"
@@ -47,6 +47,29 @@ st.markdown(
   .bx-unknown {{ background: #DDD5C5; color: {INK}; }}
   .bx-muted {{ color: #55585F; font-size: .88rem; }}
   .stTabs [data-baseweb="tab-list"] {{ gap: 6px; }}
+  .bx-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 6px 0 18px; }}
+  .bx-card {{ background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 14px 16px;
+      box-shadow: 0 1px 2px rgba(20,22,27,.04); overflow-wrap: anywhere; }}
+  .bx-card h5 {{ font-family: 'Space Grotesk', sans-serif; font-weight: 700; margin: 0 0 4px; font-size: 1.02rem; color: {INK}; }}
+  .bx-card .bx-big {{ font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.35rem; color: {VELVET}; }}
+  .bx-card p {{ margin: 2px 0; font-size: .92rem; }}
+  .bx-card a {{ color: {VELVET}; font-weight: 600; text-decoration: none; }}
+  .bx-step {{ background: #FFFDF8; border: 1px solid #E2DACB; border-radius: 14px; padding: 16px 18px; }}
+  .bx-step .bx-num {{ display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: {VELVET}; color: #fff;
+      align-items: center; justify-content: center; font-weight: 700; font-family: 'Space Grotesk', sans-serif; margin-bottom: 6px; }}
+  .bx-empty {{ border: 1.5px dashed #D3C9B6; border-radius: 14px; padding: 22px; text-align: center; color: #55585F; }}
+  .bx-footer {{ border-top: 1px solid #E2DACB; margin-top: 2.5rem; padding-top: 1rem; display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; color: #55585F; font-size: .88rem; }}
+  .bx-footer b {{ color: {INK}; font-family: 'Space Grotesk', sans-serif; }}
+  @media (max-width: 640px) {{
+    .block-container {{ padding: 1rem 0.9rem 2rem; }}
+    .bx-hero {{ padding: 20px; gap: 14px; }}
+    .bx-hero img {{ height: 38px; }}
+    .bx-hero h1 {{ font-size: 1.55rem; }}
+    .stTabs [data-baseweb="tab-list"] {{ overflow-x: auto; }}
+    .stTabs [data-baseweb="tab"] {{ font-size: .9rem; white-space: nowrap; }}
+    [data-testid="stMetricValue"] {{ font-size: 1.5rem; }}
+  }}
   .stTabs [data-baseweb="tab"] {{ font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.02rem; }}
 </style>
 """,
@@ -95,6 +118,23 @@ if "balances_loaded" not in st.session_state:
 
 bouncer: Bouncer = st.session_state.bouncer
 st.caption(f"Data source: **{st.session_state.get('data_source', 'Mock data')}**")
+
+
+# How Bouncer works
+st.markdown("#### How Bouncer works")
+st.markdown(
+    """
+<div class="bx-grid">
+  <div class="bx-step"><div class="bx-num">1</div><h5 style="margin:0 0 4px">Find a trip</h5>
+    <p>Tell Bouncer where and when. It pulls cash fares and award space for the route.</p></div>
+  <div class="bx-step"><div class="bx-num">2</div><h5 style="margin:0 0 4px">Compare cash vs points</h5>
+    <p>Cash, points, transfers, bought points: ranked by real cost. If an award doesn't beat cash, it doesn't get in.</p></div>
+  <div class="bx-step"><div class="bx-num">3</div><h5 style="margin:0 0 4px">Book smart</h5>
+    <p>Get the exact steps: which points to transfer, where, and what it saves vs cash.</p></div>
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
 # Sidebar – balances
 with st.sidebar:
@@ -188,6 +228,12 @@ with tab_plan:
             with st.expander("Smarter alternatives"):
                 for a in rec.alternatives:
                     st.write(f"• {a}")
+    else:
+        st.markdown(
+            '<div class="bx-empty"><b>No search yet.</b><br>Pick a route and dates, then hit '
+            '<b>Find best deals</b>. Bouncer will rank cash, points, transfers and bought points by real cost.</div>',
+            unsafe_allow_html=True,
+        )
 
 # ---------------------------------------------------------------------------
 # Deals data (advice-only reference data from bouncer/deals.json)
@@ -216,6 +262,25 @@ def _dash(v):
 
 def _cpp(v):
     return f"{v:.2f}¢" if isinstance(v, (int, float)) else _DASH
+
+
+def _cards(items):
+    """Render a responsive grid of cards. items: dicts with title, big, lines, link, link_text."""
+    import html as _h
+
+    out = []
+    for it in items:
+        parts = [f"<h5>{_h.escape(it['title'])}</h5>"]
+        if it.get("big"):
+            parts.append(f"<div class='bx-big'>{_h.escape(it['big'])}</div>")
+        for ln in it.get("lines", []):
+            if ln:
+                parts.append(f"<p>{_h.escape(ln)}</p>")
+        if it.get("link"):
+            parts.append(f"<p><a href='{_h.escape(it['link'])}' target='_blank' rel='noopener'>"
+                         f"{_h.escape(it.get('link_text', 'Source'))} →</a></p>")
+        out.append("<div class='bx-card'>" + "".join(parts) + "</div>")
+    st.markdown("<div class='bx-grid'>" + "".join(out) + "</div>", unsafe_allow_html=True)
 
 
 with tab_buy:
@@ -267,16 +332,13 @@ with tab_buy:
             )
 
     st.markdown("#### No sale right now")
-    st.dataframe(
-        [
-            {"Program": n["program"], "Standard ¢/pt": _cpp(n.get("standard_cpp")),
-             "Note": _dash(n.get("note")), "Buy page": n.get("buy_url") or n["source_url"]}
-            for n in _deals["buy_points_no_sale"]
-        ],
-        column_config={"Buy page": st.column_config.LinkColumn("Buy page", display_text=r"^https://(?:www\.)?([^/]+).*")},
-        hide_index=True,
-        width="stretch",
-    )
+    _cards([
+        {"title": n["program"],
+         "lines": [f"Standard: {_cpp(n.get('standard_cpp'))}/pt" if n.get("standard_cpp") else "", n.get("note")],
+         "link": n.get("buy_url") or n["source_url"],
+         "link_text": "Buy on official site" if n.get("buy_url") else "Source"}
+        for n in _deals["buy_points_no_sale"]
+    ])
     if _meta.get("bank_points_note"):
         st.caption(_meta["bank_points_note"])
     st.caption(
@@ -292,41 +354,50 @@ with tab_deals:
         f"Deals as of {_deals['as_of']}. Deals change often and can end early; "
         "verify on the source before transferring."
     )
-    _src = {"Source": st.column_config.LinkColumn("Source", display_text="source")}
-
     st.markdown("#### Transfer bonuses")
     if _deals["transfer_bonuses"]:
-        st.dataframe(
-            [
-                {"Bank": t["bank"], "Partner": t["partner"], "Bonus": f"+{t['bonus_pct']:g}%",
-                 "Ends": t["ends"], "Days left": days_left(t["ends"], _today), "Source": t["source_url"]}
-                for t in _deals["transfer_bonuses"]
-            ],
-            column_config=_src, hide_index=True, width="stretch",
-        )
+        _cards([
+            {"title": f"{t['bank']} → {t['partner']}", "big": f"+{t['bonus_pct']:g}%",
+             "lines": [f"Ends {t['ends']} · {days_left(t['ends'], _today)} days left"],
+             "link": t["source_url"]}
+            for t in _deals["transfer_bonuses"]
+        ])
     else:
-        st.info("No active transfer bonuses right now.")
+        st.markdown('<div class="bx-empty">No active transfer bonuses right now. Check back soon.</div>',
+                    unsafe_allow_html=True)
 
     st.markdown("#### Trending hotels")
-    st.dataframe(
-        [
-            {"Hotel": h["name"], "Location": _dash(h.get("location")), "Program": h["program"],
-             "Points / price": _dash(h.get("points_or_price")), "Date": _dash(h.get("date")),
-             "Why": h["why"], "Source": h["source_url"]}
-            for h in _deals["trending_hotels"]
-        ],
-        column_config=_src, hide_index=True, width="stretch",
-    )
+    _cards([
+        {"title": h["name"], "big": _dash(h.get("points_or_price")) if h.get("points_or_price") else "",
+         "lines": [f"{_dash(h.get('location'))} · {h['program']}", _dash(h.get("date")), h["why"]],
+         "link": h["source_url"]}
+        for h in _deals["trending_hotels"]
+    ])
 
     st.markdown("#### Hotel points promos")
-    st.dataframe(
-        [
-            {"Promo": h["name"], "Program": h["program"], "Offer": h["why"],
-             "Ends / dates": _dash(h.get("date")), "Source": h["source_url"]}
-            for h in _deals["hotel_promos"]
-        ],
-        column_config=_src, hide_index=True, width="stretch",
-    )
+    _cards([
+        {"title": h["name"], "lines": [h["program"], h["why"], f"Dates: {_dash(h.get('date'))}"],
+         "link": h["source_url"]}
+        for h in _deals["hotel_promos"]
+    ])
 
-st.divider()
-st.caption("Bouncer · Only real deals get in. Advice only; Bouncer never sells points.")
+# FAQ
+st.markdown("### FAQ")
+with st.expander("What is Bouncer?"):
+    st.write("Your travel deal bouncer. Bouncer compares cash, awards, transfer bonuses and points sales, "
+             "ranks every way to pay by real cost, and shows the exact steps to book.")
+with st.expander("Does Bouncer sell points or take bookings?"):
+    st.write("No. Bouncer is advice-only. It never sells points and never books for you; "
+             "every buy or transfer happens on the program's own site.")
+with st.expander("Where do the deals come from?"):
+    st.write("Public sources such as Upgraded Points, AwardWallet, NerdWallet, The Points Guy and the programs' own "
+             "pages. Each deal links to its source. Verdicts use Bouncer's own valuations.")
+with st.expander("How often are deals updated?"):
+    st.write(f"Deals are refreshed in batches (current batch: {_deals['as_of']}). Expired deals drop off "
+             "automatically, but programs can change or end offers early, so always verify before you buy or transfer.")
+
+st.markdown(
+    '<div class="bx-footer"><span><b>Bouncer</b> · Only real deals get in. Advice only; never sells points.</span>'
+    '<span>@bouncertravel</span></div>',
+    unsafe_allow_html=True,
+)
