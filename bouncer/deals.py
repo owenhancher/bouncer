@@ -40,4 +40,7 @@ def load_deals(today: Optional[date] = None, path: Path = DEALS_PATH) -> Dict[st
     for key in ("transfer_bonuses", "buy_points_sales"):
         deals = [d for d in raw.get(key, []) if is_active(d, today)]
         out[key] = sorted(deals, key=_sort_key)
+    # Hotel lists use free-text dates, so they're passed through in file order.
+    for key in ("trending_hotels", "hotel_promos"):
+        out[key] = list(raw.get(key, []))
     return out

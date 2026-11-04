@@ -153,5 +153,153 @@
       "note": "Ongoing",
       "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/"
     }
+  ],
+  "trending_hotels": [
+    {
+      "name": "Grand Hyatt Grand Cayman",
+      "location": "Seven Mile Beach, Cayman",
+      "program": "Hyatt",
+      "points_or_price": "Cat 8, 35k/55k/75k pts per night; cash from ~$1,767 + $85 resort fee",
+      "date": "opens 2026-11-28",
+      "why": "Big November opening, earns the 2X new-hotel bonus",
+      "source_url": "https://deeparrival.com/news/grand-hyatt-grand-cayman-opens-november-28-2026/"
+    },
+    {
+      "name": "Grand Hyatt The Red Sea",
+      "location": "Shura Island, Saudi Arabia",
+      "program": "Hyatt",
+      "points_or_price": null,
+      "date": "opened 2026-11-02",
+      "why": "430 keys, 2X new-hotel bonus; only 2 of 9 restaurants open so far",
+      "source_url": "https://thepointsparty.com/articles/grand-hyatt-the-red-sea-opens-shura-island"
+    },
+    {
+      "name": "Amare Cancun Adults Only All-Inclusive, Curio by Hilton",
+      "location": "Cancun Hotel Zone",
+      "program": "Hilton",
+      "points_or_price": null,
+      "date": "opened 2026-10-31",
+      "why": "Two 360-degree rooftop infinity pools",
+      "source_url": "https://stories.hilton.com/releases/amare-cancun-curio-by-hilton-now-open"
+    },
+    {
+      "name": "Cape Town EDITION",
+      "location": "V&A Waterfront, South Africa",
+      "program": "Marriott",
+      "points_or_price": "108k pts off-peak, 131-146k peak; cash $1,000+",
+      "date": "opens 2026-11-24",
+      "why": "Marriott's first EDITION in Africa",
+      "source_url": "https://www.insideflyer.com/posts/cape-town-edition-now-bookable-from-108k-points/"
+    },
+    {
+      "name": "Roomers ParkView Frankfurt, Luxury Collection",
+      "location": "Frankfurt",
+      "program": "Marriott",
+      "points_or_price": "cash from ~EUR 380",
+      "date": "Nov 2026",
+      "why": "New Luxury Collection opening",
+      "source_url": "https://onemileatatime.com/news/roomers-parkview-frankfurt-marriott-luxury-collection/"
+    },
+    {
+      "name": "St. Regis Dubai, The Palm",
+      "location": "Dubai",
+      "program": "Marriott",
+      "points_or_price": null,
+      "date": "reopened 2026-11-01",
+      "why": "290 refreshed rooms, rooftop garden",
+      "source_url": "https://www.travelextra.ie/here-are-the-major-hotel-openings-worldwide-in-november/"
+    },
+    {
+      "name": "Fairmont New Orleans",
+      "location": "New Orleans",
+      "program": "Accor ALL",
+      "points_or_price": null,
+      "date": "opened 2026-11-02",
+      "why": "Former Bank of New Orleans tower, rooftop bar",
+      "source_url": "https://www.travelextra.ie/here-are-the-major-hotel-openings-worldwide-in-november/"
+    },
+    {
+      "name": "Mercure Niseko Resort",
+      "location": "Hokkaido, Japan",
+      "program": "Accor ALL",
+      "points_or_price": null,
+      "date": "Nov 2026",
+      "why": "Ski-in access for ski season",
+      "source_url": "https://www.travelextra.ie/here-are-the-major-hotel-openings-worldwide-in-november/"
+    },
+    {
+      "name": "Casa Verbena Madrid, Outset Collection by Hilton",
+      "location": "Madrid",
+      "program": "Hilton",
+      "points_or_price": null,
+      "date": "opened 2026-11-04",
+      "why": "45-key boutique",
+      "source_url": "https://www.travelextra.ie/here-are-the-major-hotel-openings-worldwide-in-november/"
+    },
+    {
+      "name": "Perla La Paz, Tapestry by Hilton",
+      "location": "La Paz, Baja California Sur",
+      "program": "Hilton",
+      "points_or_price": null,
+      "date": "bookable from 2026-11-16",
+      "why": "Historic waterfront building",
+      "source_url": "https://deeparrival.com/news/perla-la-paz-tapestry-hilton-november-16-2026/"
+    }
+  ],
+  "hotel_promos": [
+    {
+      "name": "Hyatt New Hotel Bonus",
+      "location": null,
+      "program": "Hyatt",
+      "points_or_price": null,
+      "date": "dates vary",
+      "why": "2X points up to 25k per stay at 65 new hotels",
+      "source_url": "https://awardwallet.com/hotels/world-of-hyatt/new-hotel-bonus/"
+    },
+    {
+      "name": "Hyatt fall promo",
+      "location": null,
+      "program": "Hyatt",
+      "points_or_price": null,
+      "date": null,
+      "why": "3,000 bonus pts per 3 nights, up to 36k; award nights count",
+      "source_url": "https://www.pointsyeah.com/insider/deals/fall-hotel-promotions-2026"
+    },
+    {
+      "name": "Marriott stay promo",
+      "location": null,
+      "program": "Marriott",
+      "points_or_price": null,
+      "date": "stay by 2026-11-22",
+      "why": "1,500 pts per paid 2+ night stay, +3,000 at resorts; register by 2026-11-13",
+      "source_url": "https://www.pointsyeah.com/insider/deals/fall-hotel-promotions-2026"
+    },
+    {
+      "name": "Hilton More Points to Play",
+      "location": null,
+      "program": "Hilton",
+      "points_or_price": null,
+      "date": "2026-12-31",
+      "why": "3,000 pts per stay at luxury/lifestyle/resort, 1,000 elsewhere",
+      "source_url": "https://www.pointsyeah.com/insider/deals/fall-hotel-promotions-2026"
+    },
+    {
+      "name": "IHG bonus",
+      "location": null,
+      "program": "IHG",
+      "points_or_price": null,
+      "date": "2026-12-31",
+      "why": "Up to 3X points (no bonus on first stay)",
+      "source_url": "https://www.pointsyeah.com/insider/deals/fall-hotel-promotions-2026"
+    },
+    {
+      "name": "IHG new-hotel award discount",
+      "location": null,
+      "program": "IHG",
+      "points_or_price": null,
+      "date": "from 2026-11-30 to 2027-04-30, varies by hotel",
+      "why": "15% off award nights at 323 new hotels, up to 3 nights",
+      "source_url": "https://awardwallet.com/news/ihg-one-rewards/new-hotel-award-discount/"
+    }
   ]
 }

@@ -205,5 +205,44 @@ with st.expander("🔥 Current points deals", expanded=False):
     else:
         st.info("No active buy-points sales right now.")
 
+    _dash = lambda v: v if v else "—"  # noqa: E731
+    _hotel_cfg = {"Source": st.column_config.LinkColumn("Source", display_text="source")}
+
+    st.markdown("**Trending hotels**")
+    st.dataframe(
+        [
+            {
+                "Hotel": h["name"],
+                "Location": _dash(h.get("location")),
+                "Program": h["program"],
+                "Points / price": _dash(h.get("points_or_price")),
+                "Date": _dash(h.get("date")),
+                "Why": h["why"],
+                "Source": h["source_url"],
+            }
+            for h in _deals["trending_hotels"]
+        ],
+        column_config=_hotel_cfg,
+        hide_index=True,
+        width="stretch",
+    )
+
+    st.markdown("**Hotel points promos**")
+    st.dataframe(
+        [
+            {
+                "Promo": h["name"],
+                "Program": h["program"],
+                "Offer": h["why"],
+                "Ends / dates": _dash(h.get("date")),
+                "Source": h["source_url"],
+            }
+            for h in _deals["hotel_promos"]
+        ],
+        column_config=_hotel_cfg,
+        hide_index=True,
+        width="stretch",
+    )
+
 st.divider()
 st.caption("Bouncer v0.1 · Mock data behind swappable providers. Wire real award/cash APIs to go live.")

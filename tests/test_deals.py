@@ -42,3 +42,25 @@ def test_all_real_deals_expire_eventually():
 def test_days_left():
     assert days_left("2026-11-14", date(2026, 11, 4)) == 10
     assert days_left(None, date(2026, 11, 4)) is None
+
+
+HOTEL_FIELDS = {"name", "location", "program", "points_or_price", "date", "why", "source_url"}
+
+
+def test_hotel_sections_load():
+    d = load_deals(date(2026, 11, 4))
+    assert len(d["trending_hotels"]) == 10
+    assert len(d["hotel_promos"]) == 6
+    for h in d["trending_hotels"] + d["hotel_promos"]:
+        assert HOTEL_FIELDS <= h.keys()
+        assert h["source_url"].startswith("https://")
+    # Unknown rates stay null rather than invented
+    red_sea = next(h for h in d["trending_hotels"] if "Red Sea" in h["name"])
+    assert red_sea["points_or_price"] is None
+
+
+def test_hotel_sections_default_empty(tmp_path):
+    p = tmp_path / "deals.json"
+    p.write_text(json.dumps({"as_of": "2026-11-04", "transfer_bonuses": [], "buy_points_sales": []}))
+    d = load_deals(date(2026, 11, 4), path=p)
+    assert d["trending_hotels"] == [] and d["hotel_promos"] == []
