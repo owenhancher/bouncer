@@ -6,6 +6,10 @@ __pycache__/
 venv/
 env/
 .env
+.env.*
+!config.example
+.streamlit/secrets.toml
+.debug/
 balances.json
 *.egg-info/
 dist/

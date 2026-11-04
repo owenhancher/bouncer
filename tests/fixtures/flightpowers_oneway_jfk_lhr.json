@@ -1,0 +1,84 @@
+[
+ {
+  "price_range_in_relation_to_other_periods": "high",
+  "price_insights_low": 170,
+  "price_insights_high": 470,
+  "from_airport": "New York (JFK)",
+  "to_airport": "London (LHR)",
+  "departure_date": "2026-12-19",
+  "price": "$882",
+  "price_as_number": 882,
+  "duration": "7 hr 15 min",
+  "duration_seconds": 26100,
+  "buy_link": "https://www.google.com/travel/flights?tfs=GjsSCjIwMjYtMTItMTkiHwoDSkZLEgoyMDI2LTEyLTE5GgNMSFIqAkFBMgMxMDRqBRIDSkZLcgUSA0xIUkIBAUgBmAEC&curr=USD",
+  "airline": "American | Iberia, Finnair, Alaska",
+  "stops": 0,
+  "stops_info": [],
+  "departure_description": "9:00 PM on Sat, Dec 19",
+  "arrival_description": "9:15 AM on Sun, Dec 20"
+ },
+ {
+  "price_range_in_relation_to_other_periods": "high",
+  "price_insights_low": 170,
+  "price_insights_high": 470,
+  "from_airport": "New York (JFK)",
+  "to_airport": "London (LHR)",
+  "departure_date": "2026-12-19",
+  "price": "$882",
+  "price_as_number": 882,
+  "duration": "6 hr 50 min",
+  "duration_seconds": 24600,
+  "buy_link": "https://www.google.com/travel/flights?tfs=GjsSCjIwMjYtMTItMTkiHwoDSkZLEgoyMDI2LTEyLTE5GgNMSFIqAkJBMgMxODJqBRIDSkZLcgUSA0xIUkIBAUgBmAEC&curr=USD",
+  "airline": "British Airways | American, Iberia, Finnair, Alaska",
+  "stops": 0,
+  "stops_info": [],
+  "departure_description": "11:20 PM on Sat, Dec 19",
+  "arrival_description": "11:10 AM on Sun, Dec 20"
+ },
+ {
+  "price_range_in_relation_to_other_periods": "high",
+  "price_insights_low": 170,
+  "price_insights_high": 470,
+  "from_airport": "New York (JFK)",
+  "to_airport": "London (LHR)",
+  "departure_date": "2026-12-19",
+  "price": "$580",
+  "price_as_number": 580,
+  "duration": "11 hr 11 min",
+  "duration_seconds": 40260,
+  "buy_link": "https://www.google.com/travel/flights?tfs=Gl0SCjIwMjYtMTItMTkiIAoDSkZLEgoyMDI2LTEyLTE5GgNDTFQqAkFBMgQyMDYyIh8KA0NMVBIKMjAyNi0xMi0xORoDTEhSKgJBQTIDNzMyagUSA0pGS3IFEgNMSFJCAQFIAZgBAg&curr=USD",
+  "airline": "American | Iberia, Finnair",
+  "stops": 1,
+  "stops_info": [
+   {
+    "stop_airport": "CLT",
+    "stop_duration_seconds": 4080
+   }
+  ],
+  "departure_description": "5:29 PM on Sat, Dec 19",
+  "arrival_description": "9:40 AM on Sun, Dec 20"
+ },
+ {
+  "price_range_in_relation_to_other_periods": "high",
+  "price_insights_low": 170,
+  "price_insights_high": 470,
+  "from_airport": "New York (JFK)",
+  "to_airport": "London (LHR)",
+  "departure_date": "2026-12-19",
+  "price": "$660",
+  "price_as_number": 660,
+  "duration": "9 hr 51 min",
+  "duration_seconds": 35460,
+  "buy_link": "https://www.google.com/travel/flights?tfs=GlwSCjIwMjYtMTItMTkiIAoDSkZLEgoyMDI2LTEyLTE5GgNCT1MqAkRMMgQ1NjQyIh4KA0JPUxIKMjAyNi0xMi0xORoDTEhSKgJETDICNThqBRIDSkZLcgUSA0xIUkIBAUgBmAEC&curr=USD",
+  "airline": "Delta | KLM, Virgin Atlantic | Operated by Republic Airways Delta Connection",
+  "stops": 1,
+  "stops_info": [
+   {
+    "stop_airport": "BOS",
+    "stop_duration_seconds": 6420
+   }
+  ],
+  "departure_description": "3:59 PM on Sat, Dec 19",
+  "arrival_description": "6:50 AM on Sun, Dec 20"
+ }
+]

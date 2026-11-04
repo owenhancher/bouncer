@@ -161,3 +161,58 @@ def test_no_real_network(monkeypatch):
     monkeypatch.setattr(lp.requests, "get", fail)
     f, h, _ = lp.build_providers_from_env(env={})
     assert f.search("JFK", "LHR", D)
+
+
+# ---- fixtures trimmed from real responses (2026-11-04) ----
+import json
+from pathlib import Path
+
+FIX = Path(__file__).parent / "fixtures"
+
+
+def test_flightpowers_real_fixture():
+    data = json.loads((FIX / "flightpowers_oneway_jfk_lhr.json").read_text())
+    out = lp.parse_flightpowers_flights(data, CabinClass.ECONOMY)
+    assert len(out) == 4
+    assert out[0].cash_price == 882.0 and out[0].details["airline"] == "American"
+    assert out[0].details["airline_raw"].startswith("American | ")
+    assert "JFK-LHR" in out[0].description and "nonstop" in out[0].description
+    assert out[1].details["airline"] == "British Airways"
+    assert out[2].details["stops"] == 1 and out[2].details["stop_airports"] == ["CLT"]
+    assert out[3].details["airline"] == "Delta"
+    assert all(o.booking_url.startswith("https://www.google.com/travel/flights") for o in out)
+
+
+def test_booking_live_real_fixture_and_rapidapi_headers():
+    data = json.loads((FIX / "booking_live_london.json").read_text())
+    s = Stub(Resp(data))
+    out = lp.FlightPowersHotelProvider("k", session=s).search("LHR", date(2026, 12, 19), date(2026, 12, 22))
+    url, kw = s.calls[0][1], s.calls[0][2]
+    assert url == "https://booking-live-api.p.rapidapi.com/search"
+    assert kw["headers"]["x-rapidapi-host"] == "booking-live-api.p.rapidapi.com"
+    assert kw["json"]["destination"] == "London" and kw["json"]["children"] == 0
+    assert [o.cash_price for o in out] == sorted(o.cash_price for o in out)  # cheapest first
+    strand = next(o for o in out if o.description.startswith("Strand Palace"))
+    assert strand.cash_price == 580.0 and strand.details["nights"] == 3
+    assert strand.details["price_per_night"] == 193.33 and strand.details["currency"] == "USD"
+    assert strand.details["review_score"] == 8.5 and "booking.com" in strand.booking_url
+
+
+def test_hotel_direct_fallback_on_error_not_on_429():
+    def resp(url, kw):
+        return Resp({}, status=500) if "rapidapi" in url else Resp({"properties": [{"name": "X", "price": 10}]})
+    s = Stub(resp)
+    out = lp.FlightPowersHotelProvider("k", session=s).search("London", D, R)
+    assert out[0].cash_price == 10.0 and len(s.calls) == 2
+    s2 = Stub(Resp({}, status=429))
+    with pytest.raises(lp.ProviderError):
+        lp.FlightPowersHotelProvider("k", session=s2).search("London", D, R)
+    assert len(s2.calls) == 1
+
+
+def test_flightpowers_roundtrip_real_fixture():
+    data = json.loads((FIX / "flightpowers_roundtrip_jfk_lhr.json").read_text())
+    out = lp.parse_flightpowers_flights(data, CabinClass.ECONOMY, roundtrip=True)
+    assert [o.cash_price for o in out] == [1426.0, 1687.0, 1358.0]
+    assert out[1].description.startswith("British Airways nonstop JFK-LHR")
+    assert out[2].description.startswith("Delta 1 stop(s)")

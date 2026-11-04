@@ -1,0 +1,61 @@
+{
+ "destination": "London",
+ "checkin_date": "2026-12-19",
+ "checkout_date": "2026-12-22",
+ "applied_filters": [],
+ "budget_per_night": null,
+ "properties": [
+  {
+   "name": "Strand Palace",
+   "price_string": "US$580",
+   "price": 580,
+   "review_score": 8.5,
+   "review_count": 18013,
+   "room_type": "Classic Single Room",
+   "location": "Westminster Borough, London",
+   "image_url": "https://cf.bstatic.com/xdata/images/hotel/square240/260560238.webp?k=33c832ff2e05fafebad2671e0eea997fce4f778195beb6f16973803548a6f938&o=",
+   "link": "https://www.booking.com/hotel/gb/strandpalace.html?aid=304142&label=mkt123sc-05277944-e338-4cf1-bae3-c00354aabea5&ucfs=1&arphpl=1&checkin=2026-12-19&checkout=2026-12-22&group_adults=1&req_adults=1&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=096bc6941d91c184614134867e12d62b&srepoch=1793817622&all_sr_blocks=23080234_91912860_0_42_0&highlighted_blocks=23080234_91912860_0_42_0&matching_block_id=23080234_91912860_0_42_0&sr_pri_blocks=23080234_91912860_0_42_0__43225&from_sustainable_property_sr=1&from=searchresults",
+   "nights": 3,
+   "adults": 1,
+   "children": null,
+   "latitude": 51.51071897849308,
+   "longitude": -0.12107491493225098,
+   "retrieved_at": "2026-11-04T18:40:23.744Z"
+  },
+  {
+   "name": "ibis London Stratford",
+   "price_string": "US$424",
+   "price": 424,
+   "review_score": 7.4,
+   "review_count": 2921,
+   "room_type": "Double Sweet Room by Ibis",
+   "location": "Newham, London",
+   "image_url": "https://cf.bstatic.com/xdata/images/hotel/square240/903200399.webp?k=3f83fd3d9a5346bc38226cc27839b96bd3f5a21a3f200cabcb24a9ec1b256f30&o=",
+   "link": "https://www.booking.com/hotel/gb/ibis-london-stratford.html?aid=304142&label=mkt123sc-05277944-e338-4cf1-bae3-c00354aabea5&ucfs=1&arphpl=1&checkin=2026-12-19&checkout=2026-12-22&group_adults=1&req_adults=1&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=popularity&srpvid=096bc6941d91c184614134867e12d62b&srepoch=1793817622&all_sr_blocks=4636002_376292444_2_42_0&highlighted_blocks=4636002_376292444_2_42_0&matching_block_id=4636002_376292444_2_42_0&sr_pri_blocks=4636002_376292444_2_42_0__31575&from_sustainable_property_sr=1&from=searchresults",
+   "nights": 3,
+   "adults": 1,
+   "children": null,
+   "latitude": 51.54226991070162,
+   "longitude": 0.004063546657562256,
+   "retrieved_at": "2026-11-04T18:40:23.744Z"
+  },
+  {
+   "name": "Queen Elizabeth Hostel",
+   "price_string": "US$62",
+   "price": 62,
+   "review_score": 5.9,
+   "review_count": 2303,
+   "room_type": "Bunk Bed in 18 Bed  Dormitory Room",
+   "location": "Hammersmith and Fulham, London",
+   "image_url": "https://cf.bstatic.com/xdata/images/hotel/square240/335744498.webp?k=1db11d420f0df77ec4e5cc7c71468b5cb45030e7672a6ffdab1ce5bafb8e1042&o=",
+   "link": "https://www.booking.com/hotel/gb/queen-elizabeth-hostel.html?aid=304142&label=mkt123sc-05277944-e338-4cf1-bae3-c00354aabea5&ucfs=1&arphpl=1&checkin=2026-12-19&checkout=2026-12-22&group_adults=1&req_adults=1&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=popularity&srpvid=096bc6941d91c184614134867e12d62b&srepoch=1793817622&all_sr_blocks=136255504_409308451_0_2_0&highlighted_blocks=136255504_409308451_0_2_0&matching_block_id=136255504_409308451_0_2_0&sr_pri_blocks=136255504_409308451_0_2_0__4593&from=searchresults",
+   "nights": 3,
+   "adults": 1,
+   "children": null,
+   "latitude": 51.4745442,
+   "longitude": -0.1887282000000141,
+   "retrieved_at": "2026-11-04T18:40:23.744Z"
+  }
+ ],
+ "retrieved_at": "2026-11-04T18:40:23.744Z"
+}

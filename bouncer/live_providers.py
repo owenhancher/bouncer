@@ -32,9 +32,32 @@ DEFAULT_TIMEOUT = 45
 
 FLIGHTS_HOST = "google-flights-live-api.p.rapidapi.com"
 FLIGHTS_BASE = f"https://{FLIGHTS_HOST}/api/google_flights"
-# Hotels: the FlightPowers canonical domain accepts the same RapidAPI key (x-api-key)
-# and the Booking Live API subscription. The RapidAPI-native path is not publicly documented.
-HOTELS_URL = "https://api.flightpowers.com/v1/hotels/search"
+# Hotels: Booking Live API on RapidAPI (verified live 2026-11-04). The FlightPowers direct
+# domain (x-api-key) is kept only as a fallback.
+HOTELS_HOST = "booking-live-api.p.rapidapi.com"
+HOTELS_URL = f"https://{HOTELS_HOST}/search"
+HOTELS_DIRECT_URL = "https://api.flightpowers.com/v1/hotels/search"
+
+# Booking Live API wants a city name; map common airport/metro codes.
+IATA_CITY = {
+    "LHR": "London", "LGW": "London", "LCY": "London", "STN": "London", "LTN": "London", "LON": "London",
+    "JFK": "New York", "LGA": "New York", "EWR": "New York", "NYC": "New York",
+    "CDG": "Paris", "ORY": "Paris", "PAR": "Paris", "HND": "Tokyo", "NRT": "Tokyo", "TYO": "Tokyo",
+    "HKG": "Hong Kong", "LAX": "Los Angeles", "SFO": "San Francisco", "MIA": "Miami", "ORD": "Chicago",
+    "BOS": "Boston", "DXB": "Dubai", "SIN": "Singapore", "FCO": "Rome", "MAD": "Madrid", "BCN": "Barcelona",
+    "AMS": "Amsterdam", "FRA": "Frankfurt", "DUB": "Dublin", "LIS": "Lisbon", "SYD": "Sydney",
+}
+
+
+def _airport_code(v: Any) -> str:
+    """'New York (JFK)' -> 'JFK'; passthrough otherwise."""
+    m = re.search(r"\(([A-Z]{3})\)", str(v or ""))
+    return m.group(1) if m else str(v or "")
+
+
+def _primary_airline(v: Any) -> str:
+    """'American | Iberia, Finnair' -> 'American'; 'American, British Airways' stays (multi-carrier)."""
+    return (str(v or "").split("|")[0].strip()) or "Unknown airline"
 ATF_BASE = "https://awardtravelfinder.com/api/v1"
 
 SEAT_TYPE = {
@@ -76,6 +99,25 @@ def _num(v: Any) -> Optional[float]:
     return float(m.group(0).replace(",", "")) if m else None
 
 
+def _dump(name: str, resp: Any) -> None:
+    """If BOUNCER_DEBUG_DIR is set, save the raw response (body + status + search header). Never headers sent."""
+    d = os.environ.get("BOUNCER_DEBUG_DIR")
+    if not d:
+        return
+    try:
+        import json, time
+        Path(d).mkdir(parents=True, exist_ok=True)
+        try:
+            body = resp.json()
+        except Exception:
+            body = getattr(resp, "text", None)
+        hdrs = getattr(resp, "headers", None) or {}
+        rec = {"status": resp.status_code, "x-search-status": hdrs.get("x-search-status"), "body": body}
+        (Path(d) / f"{name}_{int(time.time())}.json").write_text(json.dumps(rec, indent=1, default=str))
+    except Exception as e:  # pragma: no cover
+        log.debug("debug dump failed: %s", e)
+
+
 def _check(resp: requests.Response, name: str) -> None:
     if resp.status_code == 429:
         raise ProviderError(f"{name}: quota/rate limit exhausted (429)")
@@ -114,6 +156,7 @@ class FlightPowersFlightProvider(FlightProvider):
             "Content-Type": "application/json",
         }
         resp = self.http.post(url, json=body, headers=headers, timeout=DEFAULT_TIMEOUT)
+        _dump("flights_roundtrip" if return_date else "flights_oneway", resp)
         _check(resp, self.name)
         self.last_status = (resp.headers or {}).get("x-search-status") or (resp.headers or {}).get("X-Search-Status")
         data = resp.json()
@@ -136,7 +179,7 @@ def parse_flightpowers_flights(data: Any, cabin: CabinClass, roundtrip: bool = F
         if price is None:
             continue
         if roundtrip:
-            airline = it.get("departure_flight_airline") or it.get("airline") or "Unknown airline"
+            airline = _primary_airline(it.get("departure_flight_airline") or it.get("airline"))
             stops = it.get("total_stops")
             details = {
                 "outbound_airline": it.get("departure_flight_airline"),
@@ -150,10 +193,12 @@ def parse_flightpowers_flights(data: Any, cabin: CabinClass, roundtrip: bool = F
                 "total_duration_seconds": it.get("total_duration_seconds"),
             }
         else:
-            airline = it.get("airline") or "Unknown airline"
+            airline = _primary_airline(it.get("airline"))
             stops = it.get("stops")
             details = {
                 "airline": airline,
+                "airline_raw": it.get("airline"),
+                "stop_airports": [s.get("stop_airport") for s in (it.get("stops_info") or []) if isinstance(s, dict)],
                 "duration": it.get("duration"),
                 "duration_seconds": it.get("duration_seconds"),
                 "departs": it.get("departure_description"),
@@ -169,7 +214,7 @@ def parse_flightpowers_flights(data: Any, cabin: CabinClass, roundtrip: bool = F
             "price_insights_high": it.get("price_insights_high"),
         })
         stop_txt = "nonstop" if stops == 0 else (f"{stops} stop(s)" if stops is not None else "")
-        route = f"{it.get('from_airport', '')}-{it.get('to_airport', '')}".strip("-")
+        route = f"{_airport_code(it.get('from_airport'))}-{_airport_code(it.get('to_airport'))}".strip("-")
         desc = f"{airline} {stop_txt} {route} ({cabin.value}{', round trip' if roundtrip else ''})"
         out.append(TravelOption(
             id=f"fp-flight-{i}",
@@ -191,24 +236,40 @@ def parse_flightpowers_flights(data: Any, cabin: CabinClass, roundtrip: bool = F
 class FlightPowersHotelProvider(HotelProvider):
     name = "FlightPowers Hotels"
 
-    def __init__(self, api_key: str, session: Optional[Any] = None, limit: int = 10):
+    def __init__(self, api_key: str, session: Optional[Any] = None, limit: int = 10,
+                 direct_fallback: bool = True):
         self.api_key = api_key
         self.http = session or requests
         self.limit = limit
+        self.direct_fallback = direct_fallback
 
     def search(self, destination, check_in, check_out, travelers=1):
+        city = IATA_CITY.get(str(destination).strip().upper(), destination)
         body = {
-            "destination": destination,
+            "destination": city,
             "checkin_date": check_in.isoformat(),
             "checkout_date": check_out.isoformat(),
             "adults": max(1, travelers),
+            "children": 0,
             "currency": "USD",
-            "sort": "price_asc",
         }
-        headers = {"x-api-key": self.api_key, "Content-Type": "application/json"}
-        resp = self.http.post(HOTELS_URL, json=body, headers=headers, timeout=DEFAULT_TIMEOUT)
-        _check(resp, self.name)
-        return parse_flightpowers_hotels(resp.json(), check_in, check_out)[: self.limit]
+        headers = {"x-rapidapi-key": self.api_key, "x-rapidapi-host": HOTELS_HOST,
+                   "Content-Type": "application/json"}
+        try:
+            resp = self.http.post(HOTELS_URL, json=body, headers=headers, timeout=DEFAULT_TIMEOUT)
+            _dump("hotels", resp)
+            _check(resp, self.name)
+        except Exception as e:
+            # 429 = quota gone; same key on the direct domain draws on the same quota, so don't retry.
+            if not self.direct_fallback or "429" in str(e):
+                raise
+            log.warning("%s RapidAPI failed (%s); trying direct domain", self.name, e)
+            resp = self.http.post(HOTELS_DIRECT_URL, json=body,
+                                  headers={"x-api-key": self.api_key, "Content-Type": "application/json"},
+                                  timeout=DEFAULT_TIMEOUT)
+            _check(resp, self.name + " (direct)")
+        opts = parse_flightpowers_hotels(resp.json(), check_in, check_out)
+        return sorted(opts, key=lambda o: o.cash_price)[: self.limit]
 
 
 def parse_flightpowers_hotels(data: Any, check_in: date, check_out: date) -> List[TravelOption]:
@@ -224,14 +285,19 @@ def parse_flightpowers_hotels(data: Any, check_in: date, check_out: date) -> Lis
         if price is None:
             continue
         name = p.get("name") or "Hotel"
+        n = p.get("nights") if isinstance(p.get("nights"), int) and p.get("nights") > 0 else nights
+        ps = str(p.get("price_string") or "")
+        currency = "USD" if ("US$" in ps or ps.startswith("$") or not ps) else re.sub(r"[\d.,\s]", "", ps) or "USD"
         out.append(TravelOption(
             id=f"fp-hotel-{i}",
             type=TravelType.HOTEL,
-            description=f"{name} ({nights} nights)",
-            cash_price=float(price),  # total stay
+            description=f"{name} ({n} nights)",
+            cash_price=float(price),  # Booking Live API "price" = total for the stay (nights in response)
             cabin_or_class=p.get("room_type") or "standard",
             details={k: p.get(k) for k in ("review_score", "review_count", "location", "price_string",
-                                           "latitude", "longitude", "image_url")} | {"source": "FlightPowers"},
+                                           "latitude", "longitude", "image_url")} | {
+                "source": "FlightPowers", "nights": n, "currency": currency,
+                "price_per_night": round(float(price) / n, 2)},
             booking_url=p.get("link"),
             is_award_available=False,
         ))
@@ -266,6 +332,7 @@ class AwardTravelFinderProvider(FlightProvider):
                     headers={"X-API-Key": self.api_key},
                     timeout=DEFAULT_TIMEOUT,
                 )
+                _dump(f"atf_{airline}", resp)
                 if resp.status_code in (202, 503):
                     raise ProviderError(f"{airline}: search pending/unavailable ({resp.status_code})")
                 _check(resp, f"{self.name}/{airline}")
