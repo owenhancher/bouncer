@@ -82,3 +82,9 @@ API keys (when you wire real providers) go in environment variables or a `.env` 
 
 ---
 Built as a clean, modular foundation so the valuation core can stay solid while data sources are swapped in.
+
+## Deploy to Railway
+
+1. In Railway, create a new project from this GitHub repo. `railway.json` / `Procfile` set the start command automatically.
+2. Add your keys under the service's **Variables** tab (never commit `.env`): `RAPIDAPI_KEY`, `AWARDTRAVELFINDER_API_KEY` (optional `AWARDTRAVELFINDER_REGISTRATION_KEY`). Without keys, Bouncer runs on mock data.
+3. Under **Settings → Networking**, click **Generate Domain** to get a public URL.
