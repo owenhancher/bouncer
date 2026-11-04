@@ -269,11 +269,11 @@ with tab_buy:
     st.markdown("#### No sale right now")
     st.dataframe(
         [
-            {"Program": n["program"], "Note": _dash(n.get("note")),
-             "Buy page": n.get("buy_url") or n["source_url"]}
+            {"Program": n["program"], "Standard ¢/pt": _cpp(n.get("standard_cpp")),
+             "Note": _dash(n.get("note")), "Buy page": n.get("buy_url") or n["source_url"]}
             for n in _deals["buy_points_no_sale"]
         ],
-        column_config={"Buy page": st.column_config.LinkColumn("Link", display_text="link")},
+        column_config={"Buy page": st.column_config.LinkColumn("Buy page", display_text=r"^https://(?:www\\.)?([^/]+).*")},
         hide_index=True,
         width="stretch",
     )

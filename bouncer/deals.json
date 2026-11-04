@@ -92,7 +92,7 @@
       "ends": "2026-11-05",
       "note": "80/90/100% tiers",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
-      "buy_url": null,
+      "buy_url": "https://www.ihg.com/content/us/en/deals/member-offers/points-purchase",
       "standard_cpp": "~1.0 (derived)",
       "max_purchase": null,
       "notes": null
@@ -104,7 +104,7 @@
       "ends": "2026-11-05",
       "note": "100/110/120% tiers",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
-      "buy_url": null,
+      "buy_url": "https://trueblue.jetblue.com/buy-points/",
       "standard_cpp": "~3.23 (derived)",
       "max_purchase": null,
       "notes": null
@@ -116,7 +116,7 @@
       "ends": "2026-11-07",
       "note": "Sources conflict; one lists up to 110% at ~1.79¢. Showing the conservative figure.",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
-      "buy_url": null,
+      "buy_url": "https://www.alaskaair.com/atmosrewards/content/buy-share-gift-points",
       "standard_cpp": "~3.76 (derived)",
       "max_purchase": null,
       "notes": null
@@ -128,19 +128,19 @@
       "ends": "2026-11-23",
       "note": "",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
-      "buy_url": null,
+      "buy_url": "https://www.marriott.com/loyalty/redeem/buyPoints1.mi",
       "standard_cpp": "~1.25 (derived)",
       "max_purchase": null,
       "notes": null
     },
     {
       "program": "Choice Privileges",
-      "bonus_or_discount": "30% bonus",
+      "bonus_or_discount": "Up to 40% bonus",
       "cents_per_point": 0.74,
       "ends": "2026-11-26",
-      "note": "Sources conflict (30% vs 40%); showing the conservative 30%.",
+      "note": "Official page confirms up to 40% more through 11/26.",
       "source_url": "https://awardwallet.com/news/current-promotions-buy-points-miles/",
-      "buy_url": null,
+      "buy_url": "https://www.choicehotels.com/choice-privileges/buy-points",
       "standard_cpp": "~1.04 (derived)",
       "max_purchase": null,
       "notes": null
@@ -199,9 +199,9 @@
       "bonus_or_discount": "20% off on 5k+",
       "cents_per_point": 2.08,
       "ends": "2026-12-21",
-      "note": "",
+      "note": "Sold in 1,000s, minimum 2,000. Annual cap may be 55k (unconfirmed).",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
-      "buy_url": null,
+      "buy_url": "https://world.hyatt.com/content/gp/en/rewards/purchase-share-gift.html",
       "standard_cpp": "~2.6 (derived)",
       "max_purchase": null,
       "notes": null
@@ -385,63 +385,73 @@
   "buy_points_no_sale": [
     {
       "program": "United MileagePlus",
-      "buy_url": null,
+      "buy_url": "https://buymiles.mileageplus.com/united/united_landing_page/",
       "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Delta SkyMiles",
-      "buy_url": null,
+      "buy_url": "https://www.delta.com/us/en/skymiles/how-to-use-miles/buy-gift-transfer-donate-miles",
       "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "British Airways Avios",
-      "buy_url": null,
-      "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "buy_url": "https://www.avios.com/collect-avios/buy",
+      "note": "2,000 to 200,000 Avios per purchase",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Air France-KLM Flying Blue",
-      "buy_url": null,
+      "buy_url": "https://www.flyingblue.com/en/mileshub/buy",
       "note": "Last sale ended Sep 16",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Avianca LifeMiles",
-      "buy_url": null,
+      "buy_url": "https://www.lifemiles.com/miles/buy",
       "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Turkish Airlines Miles&Smiles",
-      "buy_url": null,
-      "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "buy_url": "https://www.turkishairlines.com/en-us/miles-and-smiles/miles-features/purchasing-miles/",
+      "note": "Minimum 1,000 miles",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Emirates Skywards",
-      "buy_url": null,
-      "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "buy_url": "https://www.emirates.com/us/english/skywards/do-more-with-your-miles/",
+      "note": "Standard $30 per 1,000 miles; up to 200k miles a year depending on tier",
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": 3.0
     },
     {
       "program": "Singapore KrisFlyer",
       "buy_url": null,
       "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "Accor Live Limitless",
       "buy_url": null,
       "note": "",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     },
     {
       "program": "ANA Mileage Club",
       "buy_url": null,
       "note": "Purchase availability unclear",
-      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/"
+      "source_url": "https://thepointsguy.com/loyalty-programs/monthly-valuations/",
+      "standard_cpp": null
     }
   ],
   "bank_points_note": "Bank points (Chase, Amex, Citi, Capital One, Bilt) can't be bought directly; they're earned through cards.",

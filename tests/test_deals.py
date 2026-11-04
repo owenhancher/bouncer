@@ -108,7 +108,17 @@ def test_conservative_figures_and_no_sale_list():
     by = {s["program"]: s for s in d["buy_points_sales"]}
     assert by["Alaska Atmos Rewards"]["cents_per_point"] == 1.98
     assert by["Finnair Plus Avios"]["cents_per_point"] == 1.45
-    assert by["Choice Privileges"]["bonus_or_discount"].startswith("30%")
+    assert by["Choice Privileges"]["bonus_or_discount"] == "Up to 40% bonus"
     assert all(s.get("max_purchase") is None for s in d["buy_points_sales"])
     names = {n["program"] for n in d["buy_points_no_sale"]}
     assert "ANA Mileage Club" in names and len(names) == 10
+
+
+def test_official_buy_urls():
+    d = load_deals(date(2026, 11, 4))
+    sales = [s for s in d["buy_points_sales"] if s.get("buy_url")]
+    no_sale = {n["program"]: n for n in d["buy_points_no_sale"]}
+    assert len(sales) == 13
+    assert no_sale["Emirates Skywards"]["standard_cpp"] == 3.0
+    for k in ("Singapore KrisFlyer", "Accor Live Limitless", "ANA Mileage Club"):
+        assert no_sale[k]["buy_url"] is None
