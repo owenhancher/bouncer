@@ -8,6 +8,7 @@ from datetime import date, timedelta
 from typing import Optional
 
 from bouncer.agent import Bouncer
+from bouncer.legal import PAGES as LEGAL_PAGES, load_page, savings_note
 from bouncer.airports import label_for, picker_options
 from bouncer.live_providers import build_providers_from_env
 from bouncer.models import TripRequest, CabinClass, TravelType
@@ -243,6 +244,7 @@ with tab_plan:
             with st.expander("Smarter alternatives"):
                 for a in rec.alternatives:
                     st.write(f"• {a}")
+        st.caption(savings_note())
     else:
         st.markdown(
             '<div class="bx-empty"><b>No search yet.</b><br>Pick a route and dates, then hit '
@@ -354,6 +356,7 @@ with tab_buy:
          "link_text": "Buy on official site" if n.get("buy_url") else "Source"}
         for n in _deals["buy_points_no_sale"]
     ])
+    st.caption(savings_note())
     if _meta.get("bank_points_note"):
         st.caption(_meta["bank_points_note"])
     st.caption(
@@ -395,6 +398,7 @@ with tab_deals:
          "link": h["source_url"]}
         for h in _deals["hotel_promos"]
     ])
+    st.caption(savings_note())
 
 # FAQ
 st.markdown("### FAQ")
@@ -411,8 +415,13 @@ with st.expander("How often are deals updated?"):
     st.write(f"Deals are refreshed in batches (current batch: {_deals['as_of']}). Expired deals drop off "
              "automatically, but programs can change or end offers early, so always verify before you buy or transfer.")
 
+st.markdown("### Legal")
+for _name, _f in LEGAL_PAGES.items():
+    with st.expander(_name):
+        st.markdown(load_page(_f))
+
 st.markdown(
-    '<div class="bx-footer"><span><b>Bouncer</b> · Only real deals get in. Advice only; never sells points.</span>'
+    '<div class="bx-footer"><span><b>Bouncer</b> · Only real deals get in. Advice only; never sells points. See Legal above: Privacy · Terms · Disclaimer · Affiliate disclosure.</span>'
     '<span>@bouncertravel</span></div>',
     unsafe_allow_html=True,
 )
