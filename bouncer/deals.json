@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-04",
+  "as_of": "2026-11-05",
   "transfer_bonuses": [
     {
       "bank": "Chase",
@@ -114,7 +114,7 @@
       "bonus_or_discount": "90% bonus",
       "cents_per_point": 1.98,
       "ends": "2026-11-07",
-      "note": "Sources conflict; one lists up to 110% at ~1.79¢. Showing the conservative figure.",
+      "note": "Sources conflict; one lists up to 110% at ~1.79\u00a2. Showing the conservative figure.",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
       "buy_url": "https://www.alaskaair.com/atmosrewards/content/buy-share-gift-points",
       "standard_cpp": "~3.76 (derived)",
@@ -150,7 +150,7 @@
       "bonus_or_discount": "50% bonus on 85k+",
       "cents_per_point": 1.45,
       "ends": "2026-11-16",
-      "note": "Headlines say up to 50% off (~1.09¢); the detailed terms say 50% bonus on 85k+ at 1.45¢. Showing the conservative figure.",
+      "note": "Headlines say up to 50% off (~1.09\u00a2); the detailed terms say 50% bonus on 85k+ at 1.45\u00a2. Showing the conservative figure.",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
       "buy_url": "https://www.finnair.com/us-en/finnair-plus/buy--transfer-or-exchange-avios",
       "standard_cpp": null,
@@ -231,6 +231,31 @@
       "max_purchase": null,
       "notes": null,
       "ends_text": "Unknown"
+    },
+    {
+      "program": "STARLUX COSMILE",
+      "bonus_or_discount": "40% off (~2.4\u00a2/mi)",
+      "cents_per_point": 2.4,
+      "ends": "2026-11-09",
+      "note": "Lowest price ever per Upgraded Points; min 3k buy",
+      "source_url": "https://upgradedpoints.com/news/buy-starlux-cosmile-miles/",
+      "buy_url": null,
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": "Verify on STARLUX site; buy_url not yet confirmed"
+    },
+    {
+      "program": "Lufthansa Miles & More",
+      "bonus_or_discount": "50% first-purchase bonus (~1.4\u00a2/mi XL)",
+      "cents_per_point": 1.4,
+      "ends": null,
+      "ends_text": "Ongoing (often targeted)",
+      "note": "Often targeted/selected members; no stated end date",
+      "source_url": "https://awardwallet.com/airlines/buy-lufthansa-miles/",
+      "buy_url": "https://www.miles-and-more.com/row/en/earn/buy-miles.html",
+      "standard_cpp": null,
+      "max_purchase": null,
+      "notes": null
     }
   ],
   "trending_hotels": [
@@ -323,6 +348,24 @@
       "date": "bookable from 2026-11-16",
       "why": "Historic waterfront building",
       "source_url": "https://deeparrival.com/news/perla-la-paz-tapestry-hilton-november-16-2026/"
+    },
+    {
+      "name": "Arctic TreeHouse Hotel",
+      "location": "Rovaniemi, Finland",
+      "program": "Hyatt (Mr & Mrs Smith)",
+      "points_or_price": "~40k\u2013200k Hyatt pts/night (ex. 42k)",
+      "date": null,
+      "why": "Trending for northern lights; Hyatt bookable via Mr & Mrs Smith",
+      "source_url": "https://upgradedpoints.com/travel/hotels/arctic-treehouse-hotel-review/"
+    },
+    {
+      "name": "Park Hyatt Riviera Maya",
+      "location": "near Cancun, Mexico",
+      "program": "Hyatt Category F",
+      "points_or_price": "45k\u201385k pts/night (~65k typical) vs ~$1,500 cash",
+      "date": "stays from 2027-02-15",
+      "why": "First all-inclusive Park Hyatt; reservations open for Feb 2027+",
+      "source_url": "https://thepointsguy.com/news/park-hyatt-riviera-maya-all-inclusive-reservations/"
     }
   ],
   "hotel_promos": [
@@ -379,6 +422,42 @@
       "date": "from 2026-11-30 to 2027-04-30, varies by hotel",
       "why": "15% off award nights at 323 new hotels, up to 3 nights",
       "source_url": "https://awardwallet.com/news/ihg-one-rewards/new-hotel-award-discount/"
+    },
+    {
+      "name": "Hilton Honors Amex 3-night bonus",
+      "location": null,
+      "program": "Hilton",
+      "points_or_price": "10,000 bonus pts",
+      "date": "book by 2026-11-09; stay by 2027-01-03",
+      "why": "10,000 bonus pts for one 3+ night paid stay; register + pay with Hilton Amex",
+      "source_url": "https://frequentmiler.com/hilton-cardholder-promo-stay-3-nights-earn-10k-bonus-points/"
+    },
+    {
+      "name": "Hyatt Thompson Hotels 2X",
+      "location": "Thompson Hotels worldwide",
+      "program": "Hyatt",
+      "points_or_price": "2X base points (5\u219210X)",
+      "date": "through 2026-11-10",
+      "why": "Register and pay cash at Thompson properties for 2X base points",
+      "source_url": "https://frequentmiler.com/hyatt-promo-earn-2x-points-on-stays-at-thompson-properties/"
+    },
+    {
+      "name": "Hyatt Under Canvas / ULUM / Bar N Ranch / Fields of Michigan",
+      "location": null,
+      "program": "Hyatt",
+      "points_or_price": "15% points rebate on award stays",
+      "date": "enroll by 2026-11-30; stays through 2026-12-01",
+      "why": "15% points rebate on award stays after registration",
+      "source_url": "https://travel-on-points.com/current-hyatt-under-canvas-promos/"
+    },
+    {
+      "name": "Marriott Homes & Villas summer 3X",
+      "location": "Homes & Villas by Marriott Bonvoy",
+      "program": "Marriott",
+      "points_or_price": "3X points on 5+ night summer stays",
+      "date": "book by 2026-11-10",
+      "why": "Book-by window ends 2026-11-10 for summer Homes & Villas stays",
+      "source_url": "https://frequentmiler.com/current-hotel-promotions/"
     }
   ],
   "schema_notes": "buy_points_sales optional fields: buy_url (verified official buy page), standard_cpp (text, may be '(derived)'), max_purchase, notes, ends_text (shown when ends is null, e.g. 'Ongoing'/'Unknown'). Missing optional fields render as a dash; max_purchase is unconfirmed everywhere so the UI shows 'See site'.",

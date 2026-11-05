@@ -6,9 +6,9 @@ from bouncer.deals import days_left, load_deals
 
 def test_real_file_loads():
     d = load_deals(date(2026, 11, 4))
-    assert d["as_of"] == "2026-11-04"
+    assert d["as_of"] == "2026-11-05"
     assert len(d["transfer_bonuses"]) == 10
-    assert len(d["buy_points_sales"]) == 13
+    assert len(d["buy_points_sales"]) == 15
     for t in d["transfer_bonuses"]:
         assert {"bank", "partner", "bonus_pct", "ends", "source_url"} <= t.keys()
 
@@ -36,7 +36,7 @@ def test_expired_filtered_and_sorted(tmp_path):
 def test_all_real_deals_expire_eventually():
     d = load_deals(date(2027, 1, 1))
     assert d["transfer_bonuses"] == []
-    assert {s["program"] for s in d["buy_points_sales"]} == {"American AAdvantage", "Virgin Atlantic Flying Club", "Wyndham Rewards"}
+    assert {s["program"] for s in d["buy_points_sales"]} == {"American AAdvantage", "Virgin Atlantic Flying Club", "Wyndham Rewards", "Lufthansa Miles & More"}
 
 
 def test_days_left():
@@ -49,8 +49,8 @@ HOTEL_FIELDS = {"name", "location", "program", "points_or_price", "date", "why",
 
 def test_hotel_sections_load():
     d = load_deals(date(2026, 11, 4))
-    assert len(d["trending_hotels"]) == 10
-    assert len(d["hotel_promos"]) == 6
+    assert len(d["trending_hotels"]) == 12
+    assert len(d["hotel_promos"]) == 10
     for h in d["trending_hotels"] + d["hotel_promos"]:
         assert HOTEL_FIELDS <= h.keys()
         assert h["source_url"].startswith("https://")
@@ -96,7 +96,7 @@ def test_where_to_buy_sort_and_fallback():
 def test_where_to_buy_real_data():
     from bouncer.valuations import PROGRAM_VALUES
     rows = where_to_buy(load_deals(date(2026, 11, 4))["buy_points_sales"], PROGRAM_VALUES, date(2026, 11, 4))
-    assert len(rows) == 13
+    assert len(rows) == 15
     ratios = [r["ratio"] for r in rows if r["ratio"] is not None]
     assert ratios == sorted(ratios)
     for r in rows:
@@ -118,7 +118,7 @@ def test_official_buy_urls():
     d = load_deals(date(2026, 11, 4))
     sales = [s for s in d["buy_points_sales"] if s.get("buy_url")]
     no_sale = {n["program"]: n for n in d["buy_points_no_sale"]}
-    assert len(sales) == 13
+    assert len(sales) == 14
     assert no_sale["Emirates Skywards"]["standard_cpp"] == 3.0
     for k in ("Singapore KrisFlyer", "Accor Live Limitless", "ANA Mileage Club"):
         assert no_sale[k]["buy_url"] is None
