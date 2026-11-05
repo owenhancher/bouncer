@@ -7,7 +7,7 @@ This policy explains what information Bouncer ("Bouncer", "we", "us"), operated 
 ## What we collect
 
 - **What you enter in the app.** Points and miles balances, program names, trip details (airports, dates, cabin, flexibility) and similar inputs. We use them only to produce your results. Bouncer does not ask for loyalty program logins or passwords. Please don't enter them.
-- **Email addresses, if you give them to us.** If we add a waitlist, newsletter or contact form later, we will collect the email address and any message you send.
+- **Waitlist and contact emails.** If you join the waitlist, we collect your email address and an optional home airport. We use them only to contact you about Bouncer access (for example early access or a demo code). We do not sell this information. Email bouncertravel@gmail.com to ask us to delete your waitlist entry, and we will. If you contact us another way, we keep what you send so we can reply.
 - **Standard hosting logs.** Our hosting provider (Railway) automatically records technical data such as IP address, browser type, the pages requested, and timestamps. We use these logs to keep the service running, secure and debuggable.
 
 We do not knowingly collect payment card numbers. If we add paid features, payments will be handled by our payment processor (see below).

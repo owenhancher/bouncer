@@ -14,3 +14,6 @@ balances.json
 *.egg-info/
 dist/
 build/
+
+data/waitlist.csv
+**/waitlist.csv
