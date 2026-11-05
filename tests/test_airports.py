@@ -33,3 +33,11 @@ def test_labels_and_options():
 
 def test_empty_query():
     assert search("") == []
+
+
+def test_preferred_majors_rank_first():
+    assert codes("new york")[0] == "JFK"
+    assert codes("london")[0] == "LHR"
+    assert codes("chicago")[0] == "ORD"
+    assert codes("paris")[0] == "CDG"
+    assert codes("cancun")[0] == "CUN"

@@ -7,12 +7,27 @@ service and an IATA code. No network calls.
 from __future__ import annotations
 
 import csv
+import unicodedata
 from dataclasses import dataclass
 from functools import lru_cache
 from pathlib import Path
 from typing import Dict, List, Optional
 
 DATA_PATH = Path(__file__).parent / "data" / "airports.csv"
+
+PREFERRED_IATA = {
+    "new york": "JFK", "nyc": "JFK", "london": "LHR", "lon": "LHR",
+    "chicago": "ORD", "paris": "CDG", "miami": "MIA", "los angeles": "LAX",
+    "la": "LAX", "tokyo": "HND", "orlando": "MCO", "san francisco": "SFO",
+    "washington": "DCA", "boston": "BOS", "seattle": "SEA", "dallas": "DFW",
+    "houston": "IAH", "atlanta": "ATL", "denver": "DEN", "cancun": "CUN",
+    "cancún": "CUN",
+}
+
+
+def _fold(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFKD", s or "") if not unicodedata.combining(c)).lower()
+
 
 # Metro areas whose airports sit in a different municipality than the metro name
 # (e.g. EWR is in Newark). Used only for searching and labels; searches still pass
@@ -90,14 +105,22 @@ def label_for(code: str) -> str:
 
 
 def search(query: str, limit: int = 20) -> List[Airport]:
-    """Find airports by IATA code, city, metro area or airport name (case-insensitive)."""
-    q = (query or "").strip().lower()
+    """Find airports by IATA code, city, metro area or airport name (case-insensitive).
+
+    Preferred majors (JFK for New York, LHR for London, etc.) rank first when the
+    query matches that city/metro.
+    """
+    q = _fold(query)
     if not q:
         return []
+    preferred = PREFERRED_IATA.get(q)
     scored = []
     for a in load_airports():
-        city, name, metro = a.city.lower(), a.name.lower(), (a.metro or _METRO_BY_CODE.get(a.iata, "")).lower()
+        city, name = _fold(a.city), _fold(a.name)
+        metro = _fold(a.metro or _METRO_BY_CODE.get(a.iata, ""))
         if a.iata.lower() == q:
+            score = 0
+        elif preferred and a.iata == preferred:
             score = 0
         elif city.startswith(q) or metro.startswith(q):
             score = 1
@@ -107,8 +130,10 @@ def search(query: str, limit: int = 20) -> List[Airport]:
             score = 3
         else:
             continue
-        scored.append((score, a.size != "large", a.city, a.iata, a))
-    scored.sort(key=lambda t: t[:4])
+        # Prefer the preferred major over other same-score matches
+        pref_penalty = 0 if (preferred and a.iata == preferred) else (0 if not preferred else 1)
+        scored.append((score, pref_penalty, a.size != "large", a.city, a.iata, a))
+    scored.sort(key=lambda t: t[:5])
     return [t[-1] for t in scored[:limit]]
 
 
