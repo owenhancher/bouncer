@@ -14,12 +14,13 @@ class BalanceTracker:
     In production: use a proper DB (Postgres/SQLite) with user auth.
     """
 
-    def __init__(self, storage_path: str = "balances.json"):
-        self.storage_path = Path(storage_path)
-        self.balances: List[LoyaltyBalance] = self._load()
+    def __init__(self, storage_path: str = "balances.json", persist: bool = True):
+        self.storage_path = Path(storage_path) if storage_path else None
+        self.persist = persist and self.storage_path is not None
+        self.balances: List[LoyaltyBalance] = self._load() if self.persist else []
 
     def _load(self) -> List[LoyaltyBalance]:
-        if not self.storage_path.exists():
+        if not self.storage_path or not self.storage_path.exists():
             return []
         try:
             data = json.loads(self.storage_path.read_text())
@@ -36,6 +37,8 @@ class BalanceTracker:
             return []
 
     def save(self) -> None:
+        if not self.persist:
+            return
         data = [
             {
                 "program": b.program,
