@@ -400,6 +400,14 @@ with tab_deals:
     ])
     st.caption(savings_note())
 
+# Hotels going viral (Video Scout). OFF unless BOUNCER_SHOW_VIDEOS=1; never breaks the page.
+try:
+    from video_scout.site import render as _render_viral_videos
+
+    _render_viral_videos(st)
+except Exception:
+    pass
+
 # FAQ
 st.markdown("### FAQ")
 with st.expander("What is Bouncer?"):

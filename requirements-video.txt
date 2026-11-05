@@ -1,0 +1,4 @@
+# Video Scout admin/CLI extras (NOT needed by the public site on Railway).
+# Also needs system ffmpeg/ffprobe and Node.js (for yt-dlp's YouTube JS challenge solver).
+-r requirements.txt
+yt-dlp[default]>=2026.10.26

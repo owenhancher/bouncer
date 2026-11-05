@@ -14,3 +14,6 @@ balances.json
 *.egg-info/
 dist/
 build/
+
+# Video Scout local data (db, downloads, exports)
+data/

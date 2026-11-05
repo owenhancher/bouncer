@@ -83,6 +83,17 @@ API keys (when you wire real providers) go in environment variables or a `.env` 
 ---
 Built as a clean, modular foundation so the valuation core can stay solid while data sources are swapped in.
 
+## Video Scout (prototype, off by default)
+
+Finds viral hotel/travel videos, shows approved ones on the site through **official embeds**, and turns **free-reuse-licensed** videos (CC0/PD, CC BY, CC BY-SA, Pexels, Pixabay; never NC/ND) into 9:16 Bouncer clips. It posts them to IG Reels, the FB Page and X, by hand or with `autopost` (daily cap + de-dupe).
+
+- Public section: set `BOUNCER_SHOW_VIDEOS=1` (reads the committed `video_scout/site_videos.json`).
+- Admin console (private): `BOUNCER_ADMIN_PASSWORD=... streamlit run admin_app.py --server.port 8502`
+- JSON CLI: `python -m video_scout discover --query "hotel room tour" --limit 25`, plus `list`, `clip`, `preview`, `post`, `autopost` and `embed-approve`.
+- Extra deps: `pip install -r requirements-video.txt`, ffmpeg, Node.js.
+
+Full guide (setup, credentials, rate limits, chat bot commands, rights rules): [docs/VIDEO_SCOUT.md](docs/VIDEO_SCOUT.md).
+
 ## Deploy to Railway
 
 1. In Railway, create a new project from this GitHub repo. `railway.json` / `Procfile` set the start command automatically.
