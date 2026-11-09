@@ -6,7 +6,7 @@ from bouncer.deals import days_left, load_deals
 
 def test_real_file_loads():
     d = load_deals(date(2026, 11, 4))
-    assert d["as_of"] == "2026-11-05"
+    assert d["as_of"] == "2026-11-06"
     assert len(d["transfer_bonuses"]) == 10
     assert len(d["buy_points_sales"]) == 15
     for t in d["transfer_bonuses"]:
@@ -49,8 +49,8 @@ HOTEL_FIELDS = {"name", "location", "program", "points_or_price", "date", "why",
 
 def test_hotel_sections_load():
     d = load_deals(date(2026, 11, 4))
-    assert len(d["trending_hotels"]) == 12
-    assert len(d["hotel_promos"]) == 10
+    assert len(d["trending_hotels"]) == 14
+    assert len(d["hotel_promos"]) == 14
     for h in d["trending_hotels"] + d["hotel_promos"]:
         assert HOTEL_FIELDS <= h.keys()
         assert h["source_url"].startswith("https://")

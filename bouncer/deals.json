@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "transfer_bonuses": [
     {
       "bank": "Chase",
@@ -114,7 +114,7 @@
       "bonus_or_discount": "90% bonus",
       "cents_per_point": 1.98,
       "ends": "2026-11-07",
-      "note": "Sources conflict; one lists up to 110% at ~1.79\u00a2. Showing the conservative figure.",
+      "note": "Sources conflict; one lists up to 110% at ~1.79¢. Showing the conservative figure.",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
       "buy_url": "https://www.alaskaair.com/atmosrewards/content/buy-share-gift-points",
       "standard_cpp": "~3.76 (derived)",
@@ -150,7 +150,7 @@
       "bonus_or_discount": "50% bonus on 85k+",
       "cents_per_point": 1.45,
       "ends": "2026-11-16",
-      "note": "Headlines say up to 50% off (~1.09\u00a2); the detailed terms say 50% bonus on 85k+ at 1.45\u00a2. Showing the conservative figure.",
+      "note": "Headlines say up to 50% off (~1.09¢); the detailed terms say 50% bonus on 85k+ at 1.45¢. Showing the conservative figure.",
       "source_url": "https://upgradedpoints.com/news/current-point-purchase-promotions/",
       "buy_url": "https://www.finnair.com/us-en/finnair-plus/buy--transfer-or-exchange-avios",
       "standard_cpp": null,
@@ -234,7 +234,7 @@
     },
     {
       "program": "STARLUX COSMILE",
-      "bonus_or_discount": "40% off (~2.4\u00a2/mi)",
+      "bonus_or_discount": "40% off (~2.4¢/mi)",
       "cents_per_point": 2.4,
       "ends": "2026-11-09",
       "note": "Lowest price ever per Upgraded Points; min 3k buy",
@@ -246,7 +246,7 @@
     },
     {
       "program": "Lufthansa Miles & More",
-      "bonus_or_discount": "50% first-purchase bonus (~1.4\u00a2/mi XL)",
+      "bonus_or_discount": "50% first-purchase bonus (~1.4¢/mi XL)",
       "cents_per_point": 1.4,
       "ends": null,
       "ends_text": "Ongoing (often targeted)",
@@ -353,7 +353,7 @@
       "name": "Arctic TreeHouse Hotel",
       "location": "Rovaniemi, Finland",
       "program": "Hyatt (Mr & Mrs Smith)",
-      "points_or_price": "~40k\u2013200k Hyatt pts/night (ex. 42k)",
+      "points_or_price": "~40k–200k Hyatt pts/night (ex. 42k)",
       "date": null,
       "why": "Trending for northern lights; Hyatt bookable via Mr & Mrs Smith",
       "source_url": "https://upgradedpoints.com/travel/hotels/arctic-treehouse-hotel-review/"
@@ -362,10 +362,28 @@
       "name": "Park Hyatt Riviera Maya",
       "location": "near Cancun, Mexico",
       "program": "Hyatt Category F",
-      "points_or_price": "45k\u201385k pts/night (~65k typical) vs ~$1,500 cash",
+      "points_or_price": "45k–85k pts/night (~65k typical) vs ~$1,500 cash",
       "date": "stays from 2027-02-15",
       "why": "First all-inclusive Park Hyatt; reservations open for Feb 2027+",
       "source_url": "https://thepointsguy.com/news/park-hyatt-riviera-maya-all-inclusive-reservations/"
+    },
+    {
+      "name": "Waldorf Astoria Kuala Lumpur",
+      "location": "Kuala Lumpur, Malaysia",
+      "program": "Hilton",
+      "points_or_price": "~95k pts/night (5th night free, ~76k effective)",
+      "date": "opened 2026-11-01",
+      "why": "All-suite, 268 keys in KL's Golden Triangle",
+      "source_url": "https://upgradedpoints.com/news/waldorf-astoria-kuala-lumpur-open-reservations/"
+    },
+    {
+      "name": "Park Hyatt Phu Quoc",
+      "location": "Phu Quoc, Vietnam",
+      "program": "Hyatt Category 7",
+      "points_or_price": "25k-55k pts/night vs ~$700+ cash before tax",
+      "date": "opens 2026-12-08",
+      "why": "First Park Hyatt resort in Vietnam; on Hyatt's new-hotel 2X list",
+      "source_url": "https://onemileatatime.com/news/park-hyatt-phu-quoc/"
     }
   ],
   "hotel_promos": [
@@ -436,7 +454,7 @@
       "name": "Hyatt Thompson Hotels 2X",
       "location": "Thompson Hotels worldwide",
       "program": "Hyatt",
-      "points_or_price": "2X base points (5\u219210X)",
+      "points_or_price": "2X base points (5→10X)",
       "date": "through 2026-11-10",
       "why": "Register and pay cash at Thompson properties for 2X base points",
       "source_url": "https://frequentmiler.com/hyatt-promo-earn-2x-points-on-stays-at-thompson-properties/"
@@ -458,6 +476,46 @@
       "date": "book by 2026-11-10",
       "why": "Book-by window ends 2026-11-10 for summer Homes & Villas stays",
       "source_url": "https://frequentmiler.com/current-hotel-promotions/"
+    },
+    {
+      "name": "Hyatt + Aeroplan: 1.5 Aeroplan pts per $1",
+      "location": "Hyatt hotels worldwide (paid eligible rates)",
+      "program": "Hyatt",
+      "points_or_price": "1.5 Aeroplan pts per $1, on top of Hyatt points",
+      "date": "register by 2026-11-11",
+      "why": "Link Hyatt and Aeroplan, then register; stays through 2027-02-14",
+      "source_url": "https://frequentmiler.com/hyatt-promo-earn-1-5x-aeroplan-points-on-stays-in-addition-to-hyatt-points/",
+      "ends": "2026-11-11"
+    },
+    {
+      "name": "Marriott Homes & Villas elite bonus",
+      "location": "Homes & Villas by Marriott Bonvoy",
+      "program": "Marriott",
+      "points_or_price": "3,000 bonus pts/night, up to 12k (Silver Elite+, $1,500 min, 2+ nights)",
+      "date": "book by 2026-11-13",
+      "why": "Book and register by 2026-11-13; stays through 2027-03-31",
+      "source_url": "https://travelingformiles.com/marriott-homes-villas-bonus-points/",
+      "ends": "2026-11-13"
+    },
+    {
+      "name": "Wyndham 4X base points",
+      "location": "Wyndham portfolio",
+      "program": "Wyndham",
+      "points_or_price": "4X base points (capped 15k-25k by status)",
+      "date": "book by 2027-01-15",
+      "why": "Register, book direct by 2027-01-15, stay by 2027-01-19",
+      "source_url": "https://frequentmiler.com/wyndham-promo-earn-4x-points-on-stays-through-1-19-27/",
+      "ends": "2027-01-15"
+    },
+    {
+      "name": "Accor+ ibis / Voyager stay bonus",
+      "location": "ALL Accor+ subscribers",
+      "program": "Accor",
+      "points_or_price": "5,000 pts (ibis) or 9,000 pts (Voyager) after an eligible stay",
+      "date": "book by 2026-11-20",
+      "why": "Requires an Accor+ subscription; stay by 2027-01-22",
+      "source_url": "https://upgradedpoints.com/news/accor-points-promo/",
+      "ends": "2026-11-20"
     }
   ],
   "schema_notes": "buy_points_sales optional fields: buy_url (verified official buy page), standard_cpp (text, may be '(derived)'), max_purchase, notes, ends_text (shown when ends is null, e.g. 'Ongoing'/'Unknown'). Missing optional fields render as a dash; max_purchase is unconfirmed everywhere so the UI shows 'See site'.",
